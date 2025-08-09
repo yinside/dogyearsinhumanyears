@@ -30,15 +30,18 @@ const FeaturedArticles = () => {
     const fetchArticles = async () => {
       try {
         const response = await fetch('/api/articles');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const data = await response.json();
         
-        if (data.success && data.articles && data.articles.length > 0) {
-          setArticles(data.articles.slice(0, 3)); // 只取前3篇
+        if (data.success && Array.isArray(data.articles) && data.articles.length > 0) {
+          setArticles(data.articles.slice(0, 3));
         } else {
           setArticles([]);
         }
-      } catch {
-        // 如果API调用失败，设置为空数组
+      } catch (error) {
+        console.error('Error fetching articles:', error);
         setArticles([]);
       } finally {
         setLoading(false);
