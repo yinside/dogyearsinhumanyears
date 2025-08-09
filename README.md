@@ -1,36 +1,126 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dog Years Calculator
+
+A modern, responsive web application built with Next.js and Tailwind CSS that accurately converts your dog's age to human years. The application features a scientific calculator, educational content, and integrates with Contentful CMS for dynamic content management.
+
+## Features
+
+- **Accurate Age Calculator**: Uses scientifically-backed formulas that account for dog size and non-linear aging patterns
+- **Responsive Design**: Beautiful, warm-toned design that works on all devices
+- **Educational Content**: Learn about dog aging, life stages, and care tips
+- **Dynamic Articles**: Content management through Contentful CMS
+- **SEO Optimized**: Proper meta tags and structured data
+- **Fast Performance**: Built with Next.js 15 and optimized for speed
+
+## Tech Stack
+
+- **Framework**: Next.js 15 with App Router
+- **Styling**: Tailwind CSS with custom warm color palette
+- **CMS**: Contentful (optional - fallback content included)
+- **Language**: TypeScript
+- **Deployment**: Vercel-ready
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18+ 
+- npm or yarn
+
+### Installation
+
+1. Install dependencies:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Set up environment variables (optional):
+Edit `.env.local` with your Contentful credentials:
+```
+CONTENTFUL_SPACE_ID=your_space_id_here
+CONTENTFUL_ACCESS_TOKEN=your_access_token_here
+CONTENTFUL_PREVIEW_ACCESS_TOKEN=your_preview_token_here
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Run the development server:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+├── app/                    # Next.js App Router pages
+│   ├── articles/          # Articles listing and individual article pages
+│   ├── globals.css        # Global styles with warm color theme
+│   ├── layout.tsx         # Root layout with header and footer
+│   └── page.tsx           # Homepage
+├── components/
+│   ├── layout/            # Layout components
+│   │   ├── Header.tsx     # Navigation header
+│   │   ├── Hero.tsx       # Hero section
+│   │   └── Footer.tsx     # Site footer
+│   └── ui/                # UI components
+│       ├── Calculator.tsx # Dog age calculator
+│       ├── HowItWorks.tsx # How it works section
+│       └── InterestingFacts.tsx # Facts section
+└── lib/
+    └── contentful.ts      # Contentful client configuration
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Features Overview
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Dog Age Calculator
+- Accounts for dog size (small, medium, large)
+- Uses modern veterinary research
+- Provides life stage information
+- Interactive and user-friendly interface
 
-## Deploy on Vercel
+### Content Management
+- Integrates with Contentful CMS for articles and facts
+- Fallback content when CMS is not configured
+- Rich text content support
+- Image management
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Design System
+- Warm color palette (oranges, ambers, browns)
+- Consistent typography using Inter font
+- Responsive grid layouts
+- Smooth animations and transitions
+- Accessibility-focused design
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Contentful Setup (Optional)
+
+If you want to use Contentful for dynamic content:
+
+1. Create a Contentful account
+2. Set up content types:
+   - **Article**: title, slug, excerpt, content, featuredImage, publishedDate
+   - **InterestingFact**: title, description, icon
+3. Add your credentials to `.env.local`
+4. The app will automatically use Contentful content when available
+
+## Deployment
+
+The application is optimized for deployment on Vercel:
+
+1. Push your code to GitHub
+2. Connect your repository to Vercel
+3. Add environment variables in Vercel dashboard
+4. Deploy!
+
+## Customization
+
+### Colors
+The warm color theme can be customized in:
+- `tailwind.config.js` - Tailwind color palette
+- `src/app/globals.css` - CSS custom properties
+
+### Content
+All fallback content can be modified in the respective component files.
+
+## License
+
+MIT License - feel free to use this project for your own purposes.

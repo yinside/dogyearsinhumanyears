@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <linearGradient id="alaskanGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#4682B4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2F4F4F;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="furGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#F5F5F5;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#D3D3D3;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A9A9A9;stop-opacity:1" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="16" cy="16" r="15" fill="url(#alaskanGradient)" stroke="#fff" stroke-width="1"/>
+  
+  <!-- Alaskan Malamute face (larger and fluffier) -->
+  <ellipse cx="16" cy="17" rx="11" ry="9" fill="url(#furGradient)" opacity="0.95"/>
+  
+  <!-- Face markings (darker areas) -->
+  <ellipse cx="16" cy="15" rx="8" ry="6" fill="#696969" opacity="0.7"/>
+  
+  <!-- Alaskan ears (pointed and erect) -->
+  <ellipse cx="10" cy="10" rx="2.5" ry="4" fill="#696969" transform="rotate(-20 10 10)"/>
+  <ellipse cx="22" cy="10" rx="2.5" ry="4" fill="#696969" transform="rotate(20 22 10)"/>
+  <ellipse cx="10" cy="11" rx="1.5" ry="2.5" fill="#FFB6C1" transform="rotate(-20 10 11)"/>
+  <ellipse cx="22" cy="11" rx="1.5" ry="2.5" fill="#FFB6C1" transform="rotate(20 22 11)"/>
+  
+  <!-- Alaskan eyes (blue/brown heterochromia) -->
+  <circle cx="13" cy="15" r="1.8" fill="#4169E1"/>
+  <circle cx="19" cy="15" r="1.8" fill="#8B4513"/>
+  <circle cx="13.3" cy="14.7" r="0.6" fill="#fff"/>
+  <circle cx="19.3" cy="14.7" r="0.6" fill="#fff"/>
+  
+  <!-- Nose (black and prominent) -->
+  <ellipse cx="16" cy="18" rx="1.2" ry="1" fill="#000"/>
+  
+  <!-- Mouth (friendly expression) -->
+  <path d="M 16 19 Q 14 21 12 20" stroke="#000" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  <path d="M 16 19 Q 18 21 20 20" stroke="#000" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  
+  <!-- Tongue (slightly visible) -->
+  <ellipse cx="16" cy="20.5" rx="1" ry="0.5" fill="#FF69B4" opacity="0.8"/>
+  
+  <!-- Age symbol (snowflake for Alaska theme) -->
+  <g transform="translate(24,8)">
+    <circle r="3.5" fill="#E6F3FF" stroke="#4682B4" stroke-width="1"/>
+    <path d="M 0 -2.5 L 0 2.5 M -2.5 0 L 2.5 0 M -1.8 -1.8 L 1.8 1.8 M -1.8 1.8 L 1.8 -1.8" stroke="#4682B4" stroke-width="0.8" stroke-linecap="round"/>
+  </g>
+</svg>
