@@ -91,22 +91,74 @@ const Calculator = () => {
     setIsCalculated(true);
   };
 
+  // Generate dynamic social sharing text
+  const generateShareText = () => {
+    const dogNameText = dogName ? `${dogName}` : 'My dog';
+    const ageStageEmoji = getStageEmoji(ageStage);
+    
+    // Different messages based on age stage
+    const stageMessages = {
+      'Puppy': [
+        `${ageStageEmoji} ${dogNameText} is just a baby at ${humanAge} human years! Still learning the ropes of being adorable 🐾`,
+        `Puppy power! ${ageStageEmoji} ${dogNameText} is ${humanAge} in human years and already stealing hearts 💕`,
+        `${dogNameText} is ${humanAge} human years old and in full puppy mode! ${ageStageEmoji} Energy level: MAXIMUM!`
+      ],
+      'Young Adult': [
+        `${ageStageEmoji} ${dogNameText} is ${humanAge} in human years - prime time for adventures and mischief! 🎾`,
+        `Look who's all grown up! ${ageStageEmoji} ${dogNameText} is ${humanAge} human years and ready to take on the world!`,
+        `${dogNameText} is ${humanAge} in human years - the perfect age for zoomies and belly rubs! ${ageStageEmoji}`
+      ],
+      'Adult': [
+        `${ageStageEmoji} ${dogNameText} is ${humanAge} in human years - wise, loyal, and still thinks they're a lap dog! 😄`,
+        `Mature and magnificent! ${ageStageEmoji} ${dogNameText} is ${humanAge} human years of pure awesomeness 🌟`,
+        `${dogNameText} is ${humanAge} in human years and has mastered the art of being the goodest dog! ${ageStageEmoji}`
+      ],
+      'Senior': [
+        `${ageStageEmoji} ${dogNameText} is ${humanAge} in human years - a distinguished senior with stories to tell! 👑`,
+        `Aging like fine wine! ${ageStageEmoji} ${dogNameText} is ${humanAge} human years of wisdom and love 💖`,
+        `${dogNameText} is ${humanAge} in human years - proof that old dogs are the best dogs! ${ageStageEmoji}`
+      ],
+      'Elderly': [
+        `${ageStageEmoji} ${dogNameText} is ${humanAge} in human years - a precious elder deserving all the treats! 🦴`,
+        `Respect your elders! ${ageStageEmoji} ${dogNameText} is ${humanAge} human years of pure love and cuddles 🤗`,
+        `${dogNameText} is ${humanAge} in human years - living proof that love only grows stronger with age! ${ageStageEmoji}`
+      ]
+    };
+    
+    // Size-based additions
+    const sizeAdditions = {
+      'small': [' (Small but mighty!)', ' (Tiny package, huge personality!)', ' (Small dog, big attitude!)'],
+      'medium': [' (The perfect size!)', ' (Just right!)', ' (Medium and magnificent!)'],
+      'large': [' (Big dog, bigger heart!)', ' (Gentle giant!)', ' (Large and in charge!)']
+    };
+    
+    const messages = stageMessages[ageStage as keyof typeof stageMessages] || [
+      `${ageStageEmoji} ${dogNameText} is ${humanAge} years old in human years! 🐕`
+    ];
+    
+    const sizeAdds = sizeAdditions[dogSize as keyof typeof sizeAdditions] || [''];
+    
+    // Random selection
+    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+    const randomSizeAdd = sizeAdds[Math.floor(Math.random() * sizeAdds.length)];
+    
+    return randomMessage + randomSizeAdd;
+  };
+
   // Social sharing functions
   const shareToTwitter = () => {
-    const dogNameText = dogName ? `${dogName}` : 'My dog';
-    const text = `${dogNameText} is ${humanAge} years old in human years! 🐕 Calculate your dog's age at`;
-    const url = 'https://dogyearsinhumanyears.com';
+    const text = generateShareText() + ' Calculate your dog\'s age at';
+    const url = 'https://www.dogyearsinhumanyears.com';
     window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
   };
 
   const shareToFacebook = () => {
-    const url = 'https://dogyearsinhumanyears.com';
+    const url = 'https://www.dogyearsinhumanyears.com';
     window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
   };
 
   const copyToClipboard = async () => {
-    const dogNameText = dogName ? `${dogName}` : 'My dog';
-    const text = `${dogNameText} is ${humanAge} years old in human years! Calculate your dog's age at https://dogyearsinhumanyears.com`;
+    const text = generateShareText() + ' Calculate your dog\'s age at https://www.dogyearsinhumanyears.com';
     try {
       await navigator.clipboard.writeText(text);
       alert('Copied to clipboard!');
@@ -133,23 +185,46 @@ const Calculator = () => {
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, 800, 600);
 
-    // Add text
-    ctx.fillStyle = '#1F2937';
-    ctx.font = 'bold 48px Arial';
-    ctx.textAlign = 'center';
+    // Add text with dynamic content
+    const shareText = generateShareText();
     const dogNameText = dogName ? `${dogName}` : 'My dog';
-    ctx.fillText(`${dogNameText} is`, 400, 200);
+    const ageStageEmoji = getStageEmoji(ageStage);
     
+    ctx.fillStyle = '#1F2937';
+    ctx.font = 'bold 36px Arial';
+    ctx.textAlign = 'center';
+    
+    // Split the share text into multiple lines for better display
+    const words = shareText.split(' ');
+    let line = '';
+    let y = 180;
+    const maxWidth = 700;
+    
+    for (let n = 0; n < words.length; n++) {
+      const testLine = line + words[n] + ' ';
+      const metrics = ctx.measureText(testLine);
+      const testWidth = metrics.width;
+      if (testWidth > maxWidth && n > 0) {
+        ctx.fillText(line, 400, y);
+        line = words[n] + ' ';
+        y += 45;
+      } else {
+        line = testLine;
+      }
+    }
+    ctx.fillText(line, 400, y);
+    
+    // Add age in large text
     ctx.fillStyle = '#EA580C';
     ctx.font = 'bold 72px Arial';
-    ctx.fillText(`${humanAge} years old`, 400, 300);
+    ctx.fillText(`${ageStageEmoji} ${humanAge}`, 400, y + 80);
     
     ctx.fillStyle = '#1F2937';
     ctx.font = '32px Arial';
-    ctx.fillText('in human years!', 400, 360);
+    ctx.fillText('human years old!', 400, y + 130);
     
     ctx.font = '24px Arial';
-    ctx.fillText('Calculate your dog\'s age at dogyearsinhumanyears.com', 400, 500);
+    ctx.fillText('Calculate your dog\'s age at www.dogyearsinhumanyears.com', 400, 500);
 
     // Download
     const link = document.createElement('a');
