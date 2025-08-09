@@ -22,7 +22,7 @@ const client = (() => {
       return {
         getEntries: () => Promise.reject(new Error('Contentful not configured - missing environment variables')),
         getEntry: () => Promise.reject(new Error('Contentful not configured - missing environment variables')),
-      } as any;
+      } as unknown;
     }
   } catch (error) {
     console.error('Error creating Contentful client:', error);
@@ -30,7 +30,7 @@ const client = (() => {
     return {
       getEntries: () => Promise.reject(new Error(`Contentful client creation failed: ${error}`)),
       getEntry: () => Promise.reject(new Error(`Contentful client creation failed: ${error}`)),
-    } as any;
+    } as unknown;
   }
 })();
 
@@ -41,7 +41,7 @@ export interface Article {
   title: string;
   slug: string;
   excerpt: string;
-  content: any;
+  content: unknown;
   featuredImage?: string | null;
   publishedDate: string;
   author?: string;
@@ -56,7 +56,7 @@ export interface ContentfulArticle {
     title: string;
     slug: string;
     excerpt: string;
-    content: any;
+    content: unknown;
     featuredImage?: {
       fields: {
         file: {
@@ -110,7 +110,7 @@ function transformArticle(contentfulArticle: ContentfulArticle): Article {
 export async function getArticles(): Promise<Article[]> {
   try {
     // First, try to get all entries to see what content types are available
-    const allEntries = await client.getEntries({
+    const allEntries = await (client as any).getEntries({
       limit: 10
     });
     
@@ -119,27 +119,27 @@ export async function getArticles(): Promise<Article[]> {
     
     for (const contentType of possibleContentTypes) {
       try {
-        const response = await client.getEntries({
+        const response = await (client as any).getEntries({
           content_type: contentType,
           order: '-fields.publishedDate',
         });
         
         if (response.items.length > 0) {
-          return response.items.map((item: any) => transformArticle(item as ContentfulArticle));
+          return response.items.map((item: unknown) => transformArticle(item as ContentfulArticle));
         }
-      } catch (typeError) {
+      } catch {
         continue;
       }
     }
     
     // If no specific content type works, return all entries that look like articles
-    const articleLikeEntries = allEntries.items.filter((item: any) => {
-      const fields = item.fields;
+    const articleLikeEntries = allEntries.items.filter((item: unknown) => {
+      const fields = (item as any).fields;
       return fields && (fields.title || fields.name) && (fields.excerpt || fields.description || fields.content);
     });
     
     if (articleLikeEntries.length > 0) {
-      return articleLikeEntries.map((item: any) => transformArticle(item as ContentfulArticle));
+      return articleLikeEntries.map((item: unknown) => transformArticle(item as ContentfulArticle));
     }
     
     return [];
@@ -157,7 +157,7 @@ export async function getArticleBySlug(slug: string): Promise<Article | null> {
     
     for (const contentType of possibleContentTypes) {
       try {
-        const response = await client.getEntries({
+        const response = await (client as any).getEntries({
           content_type: contentType,
           'fields.slug': slug,
           limit: 1,
@@ -166,27 +166,27 @@ export async function getArticleBySlug(slug: string): Promise<Article | null> {
         if (response.items.length > 0) {
           return transformArticle(response.items[0] as ContentfulArticle);
         }
-      } catch (typeError) {
+      } catch {
         continue;
       }
     }
     
     // If no specific content type works, try searching all entries
     try {
-      const allEntries = await client.getEntries({
+      const allEntries = await (client as any).getEntries({
         'fields.slug': slug,
         limit: 1
       });
       
       if (allEntries.items.length > 0) {
         const item = allEntries.items[0];
-        const fields = item.fields as any;
+        const fields = (item as any).fields;
         // Check if it looks like an article
         if (fields && (fields.title || fields.name) && (fields.excerpt || fields.description || fields.content)) {
           return transformArticle(item as ContentfulArticle);
         }
       }
-    } catch (searchError) {
+    } catch {
       console.log('Could not search all entries, article not found');
     }
     

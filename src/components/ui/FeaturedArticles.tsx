@@ -37,7 +37,7 @@ const FeaturedArticles = () => {
         } else {
           setArticles([]);
         }
-      } catch (error) {
+      } catch {
         // 如果API调用失败，设置为空数组
         setArticles([]);
       } finally {

@@ -191,9 +191,9 @@ const ArticlePage = () => {
           {/* Article Content */}
           <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12 mb-12">
             <div className="prose prose-lg max-w-none text-gray-700">
-              {article.content && Object.keys(article.content).length > 0 && (
-                 documentToReactComponents(article.content, renderOptions)
-               )}
+              {article.content && Object.keys(article.content).length > 0 ? (
+                 documentToReactComponents(article.content as any, renderOptions)
+               ) : null}
             </div>
           </div>
 
