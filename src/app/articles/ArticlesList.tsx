@@ -86,13 +86,15 @@ const ArticlesList = () => {
             
             return (
               <article key={article.slug || index} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group">
-                <div className="relative overflow-hidden">
-                  <img
-                    src={imageUrl}
-                    alt={article.title}
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
+                <Link href={`/articles/${article.slug}`} className="block">
+                  <div className="relative overflow-hidden cursor-pointer">
+                    <img
+                      src={imageUrl}
+                      alt={article.title}
+                      className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                </Link>
                 
                 <div className="p-6">
                   <div className="flex items-center text-sm text-gray-500 mb-3">
@@ -101,9 +103,11 @@ const ArticlesList = () => {
                     </time>
                   </div>
                   
-                  <h2 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-orange-600 transition-colors duration-200">
-                    {article.title}
-                  </h2>
+                  <Link href={`/articles/${article.slug}`}>
+                    <h2 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-orange-600 transition-colors duration-200 cursor-pointer">
+                      {article.title}
+                    </h2>
+                  </Link>
                   
                   <p className="text-gray-600 mb-4 line-clamp-3">
                     {article.excerpt}

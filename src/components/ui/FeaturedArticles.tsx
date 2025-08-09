@@ -101,24 +101,28 @@ const FeaturedArticles = () => {
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             {articles.map((article, index) => (
             <article key={article.slug} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
-              <div className="h-48 bg-gradient-to-br from-orange-200 to-warm-300 flex items-center justify-center">
-                {article.featuredImage ? (
-                  <img 
-                    src={article.featuredImage} 
-                    alt={article.title}
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <div className="text-6xl text-white/80">
-                    {index === 0 ? '🐕' : index === 1 ? '🔬' : '❤️'}
-                  </div>
-                )}
-              </div>
+              <Link href={`/articles/${article.slug}`} className="block">
+                <div className="h-48 bg-gradient-to-br from-orange-200 to-warm-300 flex items-center justify-center cursor-pointer">
+                  {article.featuredImage ? (
+                    <img 
+                      src={article.featuredImage} 
+                      alt={article.title}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="text-6xl text-white/80">
+                      {index === 0 ? '🐕' : index === 1 ? '🔬' : '❤️'}
+                    </div>
+                  )}
+                </div>
+              </Link>
               
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-orange-600 transition-colors duration-200">
-                  {article.title}
-                </h3>
+                <Link href={`/articles/${article.slug}`}>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-orange-600 transition-colors duration-200 cursor-pointer">
+                    {article.title}
+                  </h3>
+                </Link>
                 
                 <p className="text-gray-600 mb-4 line-clamp-3">
                   {article.excerpt}
