@@ -109,20 +109,40 @@ const HowItWorks = () => {
             <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-xl p-6">
               <h4 className="text-lg font-semibold text-gray-800 mb-4">Quick Reference</h4>
               <div className="space-y-3">
-                <div className="flex justify-between items-center py-2 border-b border-orange-200">
-                  <span className="text-gray-600">1 year old dog</span>
-                  <span className="font-semibold text-orange-600">≈ 15 human years</span>
+                <div className="space-y-2">
+                  <div className="text-sm font-medium text-gray-700 mb-2">Small & Medium Dogs:</div>
+                  <div className="flex justify-between items-center py-1 border-b border-orange-200">
+                    <span className="text-gray-600 text-sm">1 year old</span>
+                    <span className="font-semibold text-orange-600">≈ 15 human years</span>
+                  </div>
+                  <div className="flex justify-between items-center py-1 border-b border-orange-200">
+                    <span className="text-gray-600 text-sm">2 years old</span>
+                    <span className="font-semibold text-orange-600">≈ 24 human years</span>
+                  </div>
+                  <div className="flex justify-between items-center py-1">
+                    <span className="text-gray-600 text-sm">Each year after</span>
+                    <span className="font-semibold text-orange-600">+4-5 years</span>
+                  </div>
                 </div>
-                <div className="flex justify-between items-center py-2 border-b border-orange-200">
-                  <span className="text-gray-600">2 year old dog</span>
-                  <span className="font-semibold text-orange-600">≈ 24 human years</span>
+                
+                <div className="space-y-2 pt-3 border-t border-orange-200">
+                  <div className="text-sm font-medium text-gray-700 mb-2">Large Dogs:</div>
+                  <div className="flex justify-between items-center py-1 border-b border-orange-200">
+                    <span className="text-gray-600 text-sm">1 year old</span>
+                    <span className="font-semibold text-orange-600">≈ 12 human years</span>
+                  </div>
+                  <div className="flex justify-between items-center py-1 border-b border-orange-200">
+                    <span className="text-gray-600 text-sm">2 years old</span>
+                    <span className="font-semibold text-orange-600">≈ 22.5 human years</span>
+                  </div>
+                  <div className="flex justify-between items-center py-1">
+                    <span className="text-gray-600 text-sm">Each year after</span>
+                    <span className="font-semibold text-orange-600">+6.5 years</span>
+                  </div>
                 </div>
-                <div className="flex justify-between items-center py-2 border-b border-orange-200">
-                  <span className="text-gray-600">Each year after</span>
-                  <span className="font-semibold text-orange-600">≈ 4-7 human years</span>
-                </div>
+                
                 <div className="text-xs text-gray-500 mt-3">
-                  *Varies by dog size and breed
+                  *Based on scientific veterinary research
                 </div>
               </div>
             </div>
