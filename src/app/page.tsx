@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Hero from '@/components/layout/Hero';
 import Calculator from '@/components/ui/Calculator';
+import UserTestimonials from '@/components/ui/UserTestimonials';
 import HowItWorks from '@/components/ui/HowItWorks';
 import InterestingFacts from '@/components/ui/InterestingFacts';
 import FeaturedArticles from '@/components/ui/FeaturedArticles';
@@ -63,6 +64,7 @@ export default function Home() {
       <main>
         <Hero />
         <Calculator />
+        <UserTestimonials />
         <HowItWorks />
         <InterestingFacts />
         <FeaturedArticles />
