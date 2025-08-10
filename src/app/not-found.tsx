@@ -6,17 +6,26 @@ import { useEffect, useState } from 'react';
 const NotFound = () => {
   const [dogAge, setDogAge] = useState(1);
   const [isWagging, setIsWagging] = useState(false);
+  const [currentFactIndex, setCurrentFactIndex] = useState(0);
 
   useEffect(() => {
     // Random dog age between 1-15
     setDogAge(Math.floor(Math.random() * 15) + 1);
     
-    // Start wagging animation
-    const interval = setInterval(() => {
+    // Start wagging animation (slower)
+    const waggingInterval = setInterval(() => {
       setIsWagging(prev => !prev);
-    }, 500);
+    }, 800);
 
-    return () => clearInterval(interval);
+    // Change fun fact every 1 minute
+    const factInterval = setInterval(() => {
+      setCurrentFactIndex(prev => (prev + 1) % dogFacts.length);
+    }, 60000);
+
+    return () => {
+      clearInterval(waggingInterval);
+      clearInterval(factInterval);
+    };
   }, []);
 
   const calculateHumanAge = (age: number) => {
@@ -34,8 +43,6 @@ const NotFound = () => {
     "Dogs have three eyelids!",
     "A dog's nose print is unique, like a human fingerprint!"
   ];
-
-  const randomFact = dogFacts[Math.floor(Math.random() * dogFacts.length)];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 to-amber-50 flex items-center justify-center px-4">
@@ -73,8 +80,8 @@ const NotFound = () => {
             Did you know a {dogAge}-year-old dog is about <span className="font-bold text-orange-600">{calculateHumanAge(dogAge)} years old</span> in human years?
           </p>
           <div className="bg-gradient-to-r from-orange-100 to-amber-100 rounded-lg p-4">
-            <p className="text-sm text-gray-700 italic">
-              💡 Fun fact: {randomFact}
+            <p className="text-sm text-gray-700 italic transition-opacity duration-500">
+              💡 Fun fact: {dogFacts[currentFactIndex]}
             </p>
           </div>
         </div>
