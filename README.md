@@ -34,8 +34,12 @@ npm install
 ```
 
 2. Set up environment variables (optional):
-Edit `.env.local` with your Contentful credentials:
+Copy `.env.local.example` to `.env.local` and configure:
 ```
+# Google Tag Manager (optional)
+NEXT_PUBLIC_GTM_ID=GTM-XXXXXXX
+
+# Contentful (optional)
 CONTENTFUL_SPACE_ID=your_space_id_here
 CONTENTFUL_ACCESS_TOKEN=your_access_token_here
 CONTENTFUL_PREVIEW_ACCESS_TOKEN=your_preview_token_here
@@ -90,6 +94,22 @@ src/
 - Responsive grid layouts
 - Smooth animations and transitions
 - Accessibility-focused design
+
+## Google Tag Manager Setup (Optional)
+
+To enable Google Tag Manager for analytics and tracking:
+
+1. Create a Google Tag Manager account at [tagmanager.google.com](https://tagmanager.google.com)
+2. Create a new container for your website
+3. Copy your GTM container ID (format: GTM-XXXXXXX)
+4. Add it to your `.env.local` file:
+   ```
+   NEXT_PUBLIC_GTM_ID=GTM-XXXXXXX
+   ```
+5. Configure your tags, triggers, and variables in the GTM dashboard
+6. Publish your container
+
+The GTM code will automatically be included in your application when the environment variable is set.
 
 ## Contentful Setup (Optional)
 
