@@ -54,7 +54,7 @@ export interface ContentfulArticle {
   };
   fields: {
     title: string;
-    slug: string;
+    slug?: string; // Made optional since we can auto-generate from title
     excerpt: string;
     content: unknown;
     featuredImage?: {
@@ -85,6 +85,17 @@ export interface InterestingFact {
   };
 }
 
+// Helper function to generate URL-friendly slug from title
+function generateSlugFromTitle(title: string): string {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, '') // Remove special characters
+    .replace(/\s+/g, '-') // Replace spaces with hyphens
+    .replace(/-+/g, '-') // Replace multiple hyphens with single hyphen
+    .trim()
+    .replace(/^-+|-+$/g, ''); // Remove leading/trailing hyphens
+}
+
 // Helper function to transform Contentful article to our Article interface
 function transformArticle(contentfulArticle: ContentfulArticle): Article {
   let featuredImageUrl = null;
@@ -94,9 +105,12 @@ function transformArticle(contentfulArticle: ContentfulArticle): Article {
     featuredImageUrl = url.startsWith('//') ? `https:${url}` : url;
   }
   
+  // Auto-generate slug if not provided
+  const slug = contentfulArticle.fields.slug || generateSlugFromTitle(contentfulArticle.fields.title);
+  
   return {
     title: contentfulArticle.fields.title,
-    slug: contentfulArticle.fields.slug,
+    slug: slug,
     excerpt: contentfulArticle.fields.excerpt,
     content: contentfulArticle.fields.content,
     featuredImage: featuredImageUrl,
