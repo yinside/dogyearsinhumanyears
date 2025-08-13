@@ -10,6 +10,8 @@ const Calculator = () => {
   const [humanAge, setHumanAge] = useState<number | null>(null);
   const [ageStage, setAgeStage] = useState('');
   const [isCalculated, setIsCalculated] = useState(false);
+  const [inputMethod, setInputMethod] = useState<'age' | 'birthday'>('age');
+  const [dogBirthday, setDogBirthday] = useState('');
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   // Dog size images and data
@@ -40,8 +42,33 @@ const Calculator = () => {
     }
   ];
 
+  // Calculate age from birthday
+  const calculateAgeFromBirthday = (birthday: string) => {
+    const birthDate = new Date(birthday);
+    const today = new Date();
+    const ageInMilliseconds = today.getTime() - birthDate.getTime();
+    const ageInYears = ageInMilliseconds / (1000 * 60 * 60 * 24 * 365.25);
+    
+    const years = Math.floor(ageInYears);
+    const months = Math.floor((ageInYears - years) * 12);
+    
+    return { years, months, totalAge: ageInYears };
+  };
+
   const calculateHumanAge = () => {
-    const totalAge = dogAge + dogAgeMonths / 12;
+    let totalAge: number;
+    
+    if (inputMethod === 'birthday') {
+      if (!dogBirthday) return;
+      const ageData = calculateAgeFromBirthday(dogBirthday);
+      totalAge = ageData.totalAge;
+      // Update the age sliders to reflect the calculated age
+      setDogAge(ageData.years);
+      setDogAgeMonths(ageData.months);
+    } else {
+      totalAge = dogAge + dogAgeMonths / 12;
+    }
+    
     if (totalAge <= 0) return;
 
     let result = 0;
@@ -277,12 +304,61 @@ const Calculator = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Input Section */}
             <div className="space-y-8">
-              {/* Age Slider */}
+              {/* Input Method Selection */}
               <div className="space-y-4">
                 <label className="block text-lg font-semibold text-gray-800">
-                  📅 Age: {dogAge} years {dogAgeMonths > 0 && `${dogAgeMonths} months`}
+                  🎯 How would you like to input your dog's age?
                 </label>
+                <div className="grid grid-cols-2 gap-3">
+                  <button
+                    onClick={() => setInputMethod('age')}
+                    className={`p-4 rounded-2xl border-2 transition-all duration-300 text-center ${
+                      inputMethod === 'age'
+                        ? 'border-orange-500 bg-gradient-to-r from-orange-400 to-amber-400 text-white shadow-lg transform scale-105'
+                        : 'border-gray-200 bg-white/60 hover:border-orange-300 hover:bg-white/80'
+                    }`}
+                  >
+                    <div className="text-2xl mb-2">🎚️</div>
+                    <div className={`font-semibold ${
+                      inputMethod === 'age' ? 'text-white' : 'text-gray-800'
+                    }`}>
+                      Manual Age
+                    </div>
+                    <div className={`text-sm ${
+                      inputMethod === 'age' ? 'text-white/90' : 'text-gray-600'
+                    }`}>
+                      Use sliders
+                    </div>
+                  </button>
+                  <button
+                    onClick={() => setInputMethod('birthday')}
+                    className={`p-4 rounded-2xl border-2 transition-all duration-300 text-center ${
+                      inputMethod === 'birthday'
+                        ? 'border-orange-500 bg-gradient-to-r from-orange-400 to-amber-400 text-white shadow-lg transform scale-105'
+                        : 'border-gray-200 bg-white/60 hover:border-orange-300 hover:bg-white/80'
+                    }`}
+                  >
+                    <div className="text-2xl mb-2">🎂</div>
+                    <div className={`font-semibold ${
+                      inputMethod === 'birthday' ? 'text-white' : 'text-gray-800'
+                    }`}>
+                      Birthday
+                    </div>
+                    <div className={`text-sm ${
+                      inputMethod === 'birthday' ? 'text-white/90' : 'text-gray-600'
+                    }`}>
+                      Select date
+                    </div>
+                  </button>
+                </div>
+              </div>
+
+              {/* Age Input - Conditional Rendering */}
+              {inputMethod === 'age' ? (
                 <div className="space-y-4">
+                  <label className="block text-lg font-semibold text-gray-800">
+                    📅 Age: {dogAge} years {dogAgeMonths > 0 && `${dogAgeMonths} months`}
+                  </label>
                   {/* Years Slider */}
                   <div className="relative">
                     <input
@@ -321,10 +397,37 @@ const Calculator = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              ) : (
+                <div className="space-y-4">
+                  <label className="block text-lg font-semibold text-gray-800">
+                    🎂 Dog's Birthday
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="date"
+                      value={dogBirthday}
+                      onChange={(e) => setDogBirthday(e.target.value)}
+                      max={new Date().toISOString().split('T')[0]}
+                      lang="en"
+                      className="w-full px-4 py-4 bg-white/90 backdrop-blur-sm border-2 border-gray-200/50 rounded-2xl focus:ring-3 focus:ring-orange-500/30 focus:border-orange-500 transition-all duration-300 shadow-sm text-gray-700 text-lg font-medium"
+                    />
+                  </div>
+                  {dogBirthday && (
+                    <div className="bg-orange-50 border border-orange-200 rounded-xl p-4">
+                      <div className="text-sm text-orange-800">
+                        <span className="font-semibold">📊 Calculated Age:</span>
+                        {(() => {
+                          const ageData = calculateAgeFromBirthday(dogBirthday);
+                          return ` ${ageData.years} years ${ageData.months > 0 ? `${ageData.months} months` : ''}`;
+                        })()}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
 
               {/* Dog Size Selection */}
-               <div className="space-y-4">
+              <div className="space-y-4">
                  <label className="block text-lg font-semibold text-gray-800">
                    📏 Dog Size
                  </label>
@@ -361,9 +464,14 @@ const Calculator = () => {
               {/* Calculate Button */}
               <button
                 onClick={calculateHumanAge}
-                className="w-full bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold py-6 px-8 rounded-2xl hover:from-orange-600 hover:to-amber-600 transform hover:scale-105 transition-all duration-300 shadow-xl text-lg"
+                disabled={inputMethod === 'birthday' && !dogBirthday}
+                className={`w-full font-bold py-6 px-8 rounded-2xl transform transition-all duration-300 shadow-xl text-lg ${
+                  inputMethod === 'birthday' && !dogBirthday
+                    ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                    : 'bg-gradient-to-r from-orange-500 to-amber-500 text-white hover:from-orange-600 hover:to-amber-600 hover:scale-105'
+                }`}
               >
-                ✨ Calculate Human Age
+                {inputMethod === 'birthday' ? '🎂 Calculate from Birthday' : '✨ Calculate Human Age'}
               </button>
             </div>
 

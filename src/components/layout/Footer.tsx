@@ -12,7 +12,7 @@ const Footer = () => {
             <div className="flex items-center space-x-2 mb-4">
               <span className="text-2xl">🐕</span>
               <span className="text-xl font-bold">
-                Dog Years Calculator
+                Dog years in human years
               </span>
             </div>
             <p className="text-gray-400 mb-6 max-w-md">
