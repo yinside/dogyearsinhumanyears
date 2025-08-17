@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from 'next/script';
 import "./globals.css";
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -112,6 +113,7 @@ export default function RootLayout({
             __html: JSON.stringify(structuredData),
           }}
         />
+
       </head>
       <body className="antialiased">
         {/* Google Tag Manager (noscript) */}
@@ -125,6 +127,13 @@ export default function RootLayout({
             />
           </noscript>
         )}
+        {/* Google AdSense */}
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9798221829361812"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
         <Header />
         {children}
         <Footer />

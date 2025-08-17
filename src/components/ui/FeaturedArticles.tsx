@@ -7,6 +7,7 @@ import { Article } from '@/lib/contentful';
 const FeaturedArticles = () => {
   const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   const formatDate = (dateString: string) => {
     if (!dateString) return 'Date not available';
@@ -26,28 +27,31 @@ const FeaturedArticles = () => {
 
 
 
-  useEffect(() => {
-    const fetchArticles = async () => {
-      try {
-        const response = await fetch('/api/articles');
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        
-        if (data.success && Array.isArray(data.articles) && data.articles.length > 0) {
-          setArticles(data.articles.slice(0, 3));
-        } else {
-          setArticles([]);
-        }
-      } catch (error) {
-        console.error('Error fetching articles:', error);
-        setArticles([]);
-      } finally {
-        setLoading(false);
+  const fetchArticles = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await fetch('/api/articles');
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
-    };
+      const data = await response.json();
+      
+      if (data.success && Array.isArray(data.articles) && data.articles.length > 0) {
+        setArticles(data.articles.slice(0, 3));
+      } else {
+        setArticles([]);
+      }
+    } catch (error) {
+      console.error('Error fetching articles:', error);
+      setError(error instanceof Error ? error.message : 'Failed to fetch articles. Please check your internet connection.');
+      setArticles([]);
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
     fetchArticles();
   }, []);
 
@@ -93,7 +97,24 @@ const FeaturedArticles = () => {
           </p>
         </div>
         
-        {articles.length === 0 ? (
+        {error ? (
+          <div className="text-center py-12">
+            <div className="max-w-md mx-auto">
+              <div className="text-red-500 text-6xl mb-4">⚠️</div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Unable to Load Articles</h3>
+              <p className="text-gray-600 mb-6">{error}</p>
+              <button
+                onClick={fetchArticles}
+                className="inline-flex items-center px-6 py-3 bg-orange-600 text-white font-medium rounded-lg hover:bg-orange-700 transition-colors duration-200"
+              >
+                <svg className="mr-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+                Try Again
+              </button>
+            </div>
+          </div>
+        ) : articles.length === 0 ? (
           <div className="text-center py-12">
             <p className="text-gray-600 text-lg">No featured articles available. Please add content to Contentful.</p>
           </div>
