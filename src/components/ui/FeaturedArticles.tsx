@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { AlertTriangle, Dog, Microscope, Heart } from 'lucide-react';
 import { Article } from '@/lib/contentful';
 
 const FeaturedArticles = () => {
@@ -100,7 +101,9 @@ const FeaturedArticles = () => {
         {error ? (
           <div className="text-center py-12">
             <div className="max-w-md mx-auto">
-              <div className="text-red-500 text-6xl mb-4">⚠️</div>
+              <div className="flex justify-center mb-4">
+                <AlertTriangle className="w-16 h-16 text-red-500" />
+              </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">Unable to Load Articles</h3>
               <p className="text-gray-600 mb-6">{error}</p>
               <button
@@ -131,8 +134,14 @@ const FeaturedArticles = () => {
                       className="w-full h-full object-cover"
                     />
                   ) : (
-                    <div className="text-6xl text-white/80">
-                      {index === 0 ? '🐕' : index === 1 ? '🔬' : '❤️'}
+                    <div className="flex items-center justify-center">
+                      {index === 0 ? (
+                        <Dog className="w-16 h-16 text-white/80" />
+                      ) : index === 1 ? (
+                        <Microscope className="w-16 h-16 text-white/80" />
+                      ) : (
+                        <Heart className="w-16 h-16 text-white/80" />
+                      )}
                     </div>
                   )}
                 </div>

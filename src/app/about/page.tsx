@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Target, Dog, Dna, BarChart3, BookOpen, Heart } from 'lucide-react';
 
 export default function About() {
   return (
@@ -32,7 +33,9 @@ export default function About() {
                 Our mission is to provide the most accurate, science-based dog age calculations available, helping you better understand your pet's life stage and health needs.
               </p>
               <div className="flex items-center space-x-4">
-                <div className="text-4xl">🎯</div>
+                <div className="flex items-center justify-center w-16 h-16 bg-orange-100 rounded-full">
+                  <Target className="w-8 h-8 text-orange-500" />
+                </div>
                 <div>
                   <h3 className="font-semibold text-gray-900">Accuracy First</h3>
                   <p className="text-gray-600">Based on veterinary research and breed-specific data</p>
@@ -40,7 +43,11 @@ export default function About() {
               </div>
             </div>
             <div className="text-center">
-              <div className="text-8xl mb-4">🐕</div>
+              <div className="flex justify-center mb-4">
+                <div className="w-32 h-32 bg-orange-100 rounded-full flex items-center justify-center">
+                  <Dog className="w-16 h-16 text-orange-500" />
+                </div>
+              </div>
               <p className="text-gray-600 italic">"Understanding your dog's age helps you provide better care at every life stage."</p>
             </div>
           </div>
@@ -55,21 +62,27 @@ export default function About() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center text-white">
-              <div className="text-5xl mb-4">🧬</div>
+              <div className="flex justify-center mb-4">
+                <Dna className="w-12 h-12" />
+              </div>
               <h3 className="text-xl font-semibold mb-3">Scientific Approach</h3>
               <p className="opacity-90">
                 Our calculations are based on peer-reviewed veterinary research and breed-specific aging patterns.
               </p>
             </div>
             <div className="text-center text-white">
-              <div className="text-5xl mb-4">📊</div>
+              <div className="flex justify-center mb-4">
+                <BarChart3 className="w-12 h-12" />
+              </div>
               <h3 className="text-xl font-semibold mb-3">Breed-Specific Data</h3>
               <p className="opacity-90">
                 We account for size categories and breed characteristics that significantly impact aging rates.
               </p>
             </div>
             <div className="text-center text-white">
-              <div className="text-5xl mb-4">📚</div>
+              <div className="flex justify-center mb-4">
+                <BookOpen className="w-12 h-12" />
+              </div>
               <h3 className="text-xl font-semibold mb-3">Educational Content</h3>
               <p className="opacity-90">
                 Beyond calculations, we provide valuable insights about dog health and aging.
@@ -89,7 +102,11 @@ export default function About() {
             Our team consists of dog enthusiasts, veterinary professionals, and web developers who are passionate about improving the lives of dogs and their owners through better understanding and education.
           </p>
           <div className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-2xl p-8">
-            <div className="text-6xl mb-4">🐾</div>
+            <div className="flex justify-center mb-4">
+              <div className="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center">
+                <Heart className="w-10 h-10 text-orange-500" />
+              </div>
+            </div>
             <h3 className="text-xl font-semibold text-gray-900 mb-3">
               Join Our Community
             </h3>

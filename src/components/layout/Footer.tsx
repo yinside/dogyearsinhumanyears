@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Dog, Heart } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -10,7 +11,7 @@ const Footer = () => {
           {/* Brand Section */}
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
-              <span className="text-2xl">🐕</span>
+              <Dog className="w-8 h-8 text-orange-400" />
               <span className="text-xl font-bold">
                 Dog years in human years
               </span>
@@ -112,7 +113,7 @@ const Footer = () => {
               © {currentYear} Dog Years Calculator. All rights reserved.
             </div>
             <div className="flex items-center space-x-4 text-sm text-gray-400">
-              <span>Made with ❤️ for dog lovers everywhere</span>
+              <span className="flex items-center">Made with <Heart className="w-4 h-4 mx-1 text-red-400" /> for dog lovers everywhere</span>
               <span className="hidden md:inline">•</span>
               <span className="flex items-center">
                 Powered by 
@@ -126,10 +127,7 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Floating paw prints */}
-      <div className="absolute bottom-4 right-4 text-gray-800 text-opacity-20 text-2xl animate-pulse">
-        🐾
-      </div>
+
     </footer>
   );
 };

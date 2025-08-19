@@ -1,3 +1,5 @@
+import { Dog, Heart, Bone } from 'lucide-react';
+
 const Hero = () => {
   return (
     <section className="relative bg-gradient-to-br from-orange-50 to-amber-50 py-20 lg:py-32 overflow-hidden">
@@ -28,7 +30,7 @@ const Hero = () => {
               href="#calculator"
               className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-semibold rounded-full hover:from-orange-600 hover:to-amber-600 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
             >
-              <span className="mr-2">🐕</span>
+              <Dog className="mr-2 w-5 h-5" />
               Calculate Now
             </a>
             <a
@@ -60,11 +62,19 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Floating dog emojis */}
-      <div className="absolute top-20 left-10 text-4xl animate-float opacity-20">🐕</div>
-      <div className="absolute top-40 right-20 text-3xl animate-bounce-slow opacity-20">🐾</div>
-      <div className="absolute bottom-20 left-20 text-5xl animate-pulse-slow opacity-20">🦴</div>
-      <div className="absolute bottom-40 right-10 text-3xl animate-float opacity-20">🐕‍🦺</div>
+      {/* Floating dog icons */}
+      <div className="absolute top-20 left-10 animate-float opacity-20">
+        <Dog className="w-12 h-12 text-orange-400" />
+      </div>
+      <div className="absolute top-40 right-20 animate-bounce-slow opacity-20">
+        <Heart className="w-8 h-8 text-orange-400" />
+      </div>
+      <div className="absolute bottom-20 left-20 animate-pulse-slow opacity-20">
+        <Bone className="w-16 h-16 text-orange-400" />
+      </div>
+      <div className="absolute bottom-40 right-10 animate-float opacity-20">
+        <Dog className="w-8 h-8 text-orange-400" />
+      </div>
     </section>
   );
 };

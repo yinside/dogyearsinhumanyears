@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
+import { Dog, Calendar, Target, BarChart3, Gift, Download, Copy, Share2, Facebook, Twitter } from 'lucide-react';
 
 const Calculator = () => {
   const [dogAge, setDogAge] = useState(3);
@@ -21,24 +22,91 @@ const Calculator = () => {
       name: 'Small Dogs',
       weight: 'Under 20 lbs',
       examples: 'Chihuahua, Pomeranian, Yorkshire Terrier',
-      emoji: '🐕',
-      color: 'from-green-400 to-emerald-500'
+      icon: <Dog className="w-6 h-6" />,
+      color: 'from-green-400 to-emerald-500',
+      backgroundSvg: (
+        <svg className="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 100 100" fill="none">
+          {/* 吉娃娃特征：苹果形头部，大眼睛，尖立大耳朵 */}
+          <path d="M35 20c-8 0-15 6-15 15v10c0 8 6 15 15 15h30c8 0 15-6 15-15V35c0-8-6-15-15-15H35z" fill="currentColor"/>
+          {/* 大而圆的眼睛 */}
+          <circle cx="42" cy="32" r="4" fill="white" opacity="0.8"/>
+          <circle cx="58" cy="32" r="4" fill="white" opacity="0.8"/>
+          <circle cx="42" cy="32" r="2" fill="currentColor"/>
+          <circle cx="58" cy="32" r="2" fill="currentColor"/>
+          {/* 尖立的大耳朵（相对头部比例较大） */}
+          <path d="M25 15c-3 0-5 2-5 5v15c0 2 1 4 3 5l8-10c1-2 1-4 0-6L25 15z" fill="currentColor"/>
+          <path d="M75 15l-6 9c-1 2-1 4 0 6l8 10c2-1 3-3 3-5V20c0-3-2-5-5-5z" fill="currentColor"/>
+          {/* 小而尖的嘴巴 */}
+          <path d="M45 42c-2 0-4 1-4 3v3c0 2 2 3 4 3h10c2 0 4-1 4-3v-3c0-2-2-3-4-3H45z" fill="currentColor"/>
+          {/* 小鼻子 */}
+          <ellipse cx="50" cy="40" rx="2" ry="1" fill="currentColor"/>
+          {/* 紧凑的身体 */}
+          <path d="M40 60c0-3 2-5 5-5h10c3 0 5 2 5 5v15c0 3-2 5-5 5H45c-3 0-5-2-5-5V60z" fill="currentColor"/>
+        </svg>
+      )
     },
     {
       id: 'medium',
       name: 'Medium Dogs',
       weight: '20-50 lbs',
       examples: 'Beagle, Border Collie, Bulldog',
-      emoji: '🐕‍🦺',
-      color: 'from-blue-400 to-cyan-500'
+      icon: <Dog className="w-6 h-6" />,
+      color: 'from-blue-400 to-cyan-500',
+      backgroundSvg: (
+        <svg className="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 100 100" fill="none">
+          {/* 边境牧羊犬特征：匀称头部，中等眼睛，半立耳 */}
+          <path d="M30 18c-10 0-18 8-18 18v12c0 10 8 18 18 18h40c10 0 18-8 18-18V36c0-10-8-18-18-18H30z" fill="currentColor"/>
+          {/* 中等大小的眼睛 */}
+          <ellipse cx="40" cy="32" rx="3" ry="2.5" fill="white" opacity="0.8"/>
+          <ellipse cx="60" cy="32" rx="3" ry="2.5" fill="white" opacity="0.8"/>
+          <circle cx="40" cy="32" r="1.5" fill="currentColor"/>
+          <circle cx="60" cy="32" r="1.5" fill="currentColor"/>
+          {/* 半立耳朵 */}
+          <path d="M22 12c-4 0-7 3-7 7v18c0 3 2 6 5 7l10-15c2-3 2-6 0-9L22 12z" fill="currentColor"/>
+          <path d="M78 12l-8 8c-2 3-2 6 0 9l10 15c3-1 5-4 5-7V19c0-4-3-7-7-7z" fill="currentColor"/>
+          {/* 中等长度的嘴巴 */}
+          <path d="M42 42c-3 0-6 2-6 5v4c0 3 3 5 6 5h16c3 0 6-2 6-5v-4c0-3-3-5-6-5H42z" fill="currentColor"/>
+          {/* 鼻子 */}
+          <ellipse cx="50" cy="40" rx="2.5" ry="1.5" fill="currentColor"/>
+          {/* 匀称的身体 */}
+          <path d="M35 66c0-4 3-7 7-7h16c4 0 7 3 7 7v18c0 4-3 7-7 7H42c-4 0-7-3-7-7V66z" fill="currentColor"/>
+          {/* 毛发轮廓 */}
+          <path d="M28 50c-2 0-3 1-3 3v8c0 2 1 3 3 3h44c2 0 3-1 3-3v-8c0-2-1-3-3-3H28z" fill="currentColor" opacity="0.6"/>
+        </svg>
+      )
     },
     {
       id: 'large',
       name: 'Large Dogs',
       weight: 'Over 50 lbs',
       examples: 'German Shepherd, Golden Retriever, Great Dane',
-      emoji: '🐕‍🦮',
-      color: 'from-purple-400 to-violet-500'
+      icon: <Dog className="w-6 h-6" />,
+      color: 'from-purple-400 to-violet-500',
+      backgroundSvg: (
+        <svg className="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 100 100" fill="none">
+          {/* 德国牧羊犬特征：威严头部，杏仁形眼睛，大立耳 */}
+          <path d="M25 15c-12 0-22 10-22 22v15c0 12 10 22 22 22h50c12 0 22-10 22-22V37c0-12-10-22-22-22H25z" fill="currentColor"/>
+          {/* 杏仁形眼睛 */}
+          <ellipse cx="38" cy="32" rx="4" ry="2" fill="white" opacity="0.8"/>
+          <ellipse cx="62" cy="32" rx="4" ry="2" fill="white" opacity="0.8"/>
+          <ellipse cx="38" cy="32" rx="2" ry="1" fill="currentColor"/>
+          <ellipse cx="62" cy="32" rx="2" ry="1" fill="currentColor"/>
+          {/* 大而立的尖耳朵 */}
+          <path d="M15 8c-5 0-9 4-9 9v20c0 4 3 8 7 9l15-20c3-4 3-8 0-12L15 8z" fill="currentColor"/>
+          <path d="M85 8l-13 6c-3 4-3 8 0 12l15 20c4-1 7-5 7-9V17c0-5-4-9-9-9z" fill="currentColor"/>
+          {/* 较长的嘴巴 */}
+          <path d="M38 45c-4 0-8 3-8 7v6c0 4 4 7 8 7h24c4 0 8-3 8-7v-6c0-4-4-7-8-7H38z" fill="currentColor"/>
+          {/* 大鼻子 */}
+          <ellipse cx="50" cy="42" rx="3" ry="2" fill="currentColor"/>
+          {/* 强壮的身体 */}
+          <path d="M30 74c0-6 5-11 11-11h18c6 0 11 5 11 11v20c0 6-5 11-11 11H41c-6 0-11-5-11-11V74z" fill="currentColor"/>
+          {/* 胸部轮廓 */}
+          <path d="M25 58c-3 0-5 2-5 5v12c0 3 2 5 5 5h50c3 0 5-2 5-5V63c0-3-2-5-5-5H25z" fill="currentColor" opacity="0.7"/>
+          {/* 威严的眉毛 */}
+          <path d="M32 28c2-1 4-1 6 0l4 2c1 1 1 2 0 3l-4 2c-2 1-4 1-6 0l-4-2c-1-1-1-2 0-3l4-2z" fill="currentColor"/>
+          <path d="M58 28c2-1 4-1 6 0l4 2c1 1 1 2 0 3l-4 2c-2 1-4 1-6 0l-4-2c-1-1-1-2 0-3l4-2z" fill="currentColor"/>
+        </svg>
+      )
     }
   ];
 
@@ -121,34 +189,34 @@ const Calculator = () => {
   // Generate dynamic social sharing text
   const generateShareText = () => {
     const dogNameText = dogName ? `${dogName}` : 'My dog';
-    const ageStageEmoji = getStageEmoji(ageStage);
+    const ageStageText = getStageText(ageStage);
     
     // Different messages based on age stage
     const stageMessages = {
       'Puppy': [
-        `${ageStageEmoji} ${dogNameText} is just a baby at ${humanAge} human years! Still learning the ropes of being adorable 🐾`,
-        `Puppy power! ${ageStageEmoji} ${dogNameText} is ${humanAge} in human years and already stealing hearts 💕`,
-        `${dogNameText} is ${humanAge} human years old and in full puppy mode! ${ageStageEmoji} Energy level: MAXIMUM!`
+        `${ageStageText} ${dogNameText} is just a baby at ${humanAge} human years! Still learning the ropes of being adorable`,
+        `Puppy power! ${ageStageText} ${dogNameText} is ${humanAge} in human years and already stealing hearts`,
+        `${dogNameText} is ${humanAge} human years old and in full puppy mode! Energy level: MAXIMUM!`
       ],
       'Young Adult': [
-        `${ageStageEmoji} ${dogNameText} is ${humanAge} in human years - prime time for adventures and mischief! 🎾`,
-        `Look who's all grown up! ${ageStageEmoji} ${dogNameText} is ${humanAge} human years and ready to take on the world!`,
-        `${dogNameText} is ${humanAge} in human years - the perfect age for zoomies and belly rubs! ${ageStageEmoji}`
+        `${ageStageText} ${dogNameText} is ${humanAge} in human years - prime time for adventures and mischief!`,
+        `Look who's all grown up! ${ageStageText} ${dogNameText} is ${humanAge} human years and ready to take on the world!`,
+        `${dogNameText} is ${humanAge} in human years - the perfect age for zoomies and belly rubs!`
       ],
       'Adult': [
-        `${ageStageEmoji} ${dogNameText} is ${humanAge} in human years - wise, loyal, and still thinks they're a lap dog! 😄`,
-        `Mature and magnificent! ${ageStageEmoji} ${dogNameText} is ${humanAge} human years of pure awesomeness 🌟`,
-        `${dogNameText} is ${humanAge} in human years and has mastered the art of being the goodest dog! ${ageStageEmoji}`
+        `${ageStageText} ${dogNameText} is ${humanAge} in human years - wise, loyal, and still thinks they're a lap dog!`,
+        `Mature and magnificent! ${ageStageText} ${dogNameText} is ${humanAge} human years of pure awesomeness`,
+        `${dogNameText} is ${humanAge} in human years and has mastered the art of being the goodest dog!`
       ],
       'Senior': [
-        `${ageStageEmoji} ${dogNameText} is ${humanAge} in human years - a distinguished senior with stories to tell! 👑`,
-        `Aging like fine wine! ${ageStageEmoji} ${dogNameText} is ${humanAge} human years of wisdom and love 💖`,
-        `${dogNameText} is ${humanAge} in human years - proof that old dogs are the best dogs! ${ageStageEmoji}`
+        `${ageStageText} ${dogNameText} is ${humanAge} in human years - a distinguished senior with stories to tell!`,
+        `Aging like fine wine! ${ageStageText} ${dogNameText} is ${humanAge} human years of wisdom and love`,
+        `${dogNameText} is ${humanAge} in human years - proof that old dogs are the best dogs!`
       ],
       'Elderly': [
-        `${ageStageEmoji} ${dogNameText} is ${humanAge} in human years - a precious elder deserving all the treats! 🦴`,
-        `Respect your elders! ${ageStageEmoji} ${dogNameText} is ${humanAge} human years of pure love and cuddles 🤗`,
-        `${dogNameText} is ${humanAge} in human years - living proof that love only grows stronger with age! ${ageStageEmoji}`
+        `${ageStageText} ${dogNameText} is ${humanAge} in human years - a precious elder deserving all the treats!`,
+        `Respect your elders! ${ageStageText} ${dogNameText} is ${humanAge} human years of pure love and cuddles`,
+        `${dogNameText} is ${humanAge} in human years - living proof that love only grows stronger with age!`
       ]
     };
     
@@ -160,7 +228,7 @@ const Calculator = () => {
     };
     
     const messages = stageMessages[ageStage as keyof typeof stageMessages] || [
-      `${ageStageEmoji} ${dogNameText} is ${humanAge} years old in human years! 🐕`
+      `${ageStageText} ${dogNameText} is ${humanAge} years old in human years!`
     ];
     
     const sizeAdds = sizeAdditions[dogSize as keyof typeof sizeAdditions] || [''];
@@ -215,7 +283,7 @@ const Calculator = () => {
     // Add text with dynamic content
     const shareText = generateShareText();
     const dogNameText = dogName ? `${dogName}` : 'My dog';
-    const ageStageEmoji = getStageEmoji(ageStage);
+    const ageStageText = getStageText(ageStage);
     
     ctx.fillStyle = '#1F2937';
     ctx.font = 'bold 36px Arial';
@@ -244,7 +312,7 @@ const Calculator = () => {
     // Add age in large text
     ctx.fillStyle = '#EA580C';
     ctx.font = 'bold 72px Arial';
-    ctx.fillText(`${ageStageEmoji} ${humanAge}`, 400, y + 80);
+    ctx.fillText(`${ageStageText} ${humanAge}`, 400, y + 80);
     
     ctx.fillStyle = '#1F2937';
     ctx.font = '32px Arial';
@@ -271,14 +339,25 @@ const Calculator = () => {
     }
   };
 
-  const getStageEmoji = (stage: string) => {
+  const getStageIcon = (stage: string) => {
     switch (stage) {
-      case 'Puppy': return '🐶';
-      case 'Young Adult': return '🐕';
-      case 'Adult': return '🐕‍🦺';
-      case 'Senior': return '🐕‍🦺';
-      case 'Elderly': return '🐕‍🦺';
-      default: return '🐕';
+      case 'Puppy': return <Dog className="w-20 h-20 text-green-500" />;
+      case 'Young Adult': return <Dog className="w-20 h-20 text-blue-500" />;
+      case 'Adult': return <Dog className="w-20 h-20 text-orange-500" />;
+      case 'Senior': return <Dog className="w-20 h-20 text-amber-500" />;
+      case 'Elderly': return <Dog className="w-20 h-20 text-red-500" />;
+      default: return <Dog className="w-20 h-20 text-gray-500" />;
+    }
+  };
+
+  const getStageText = (stage: string) => {
+    switch (stage) {
+      case 'Puppy': return 'Puppy';
+      case 'Young Adult': return 'Young Adult';
+      case 'Adult': return 'Adult';
+      case 'Senior': return 'Senior';
+      case 'Elderly': return 'Elderly';
+      default: return 'Dog';
     }
   };
 
@@ -291,8 +370,9 @@ const Calculator = () => {
       
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent mb-6">
-            🐕 Dog Age Calculator
+          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent mb-6 flex items-center justify-center gap-4">
+            <Dog className="w-12 h-12 text-orange-600" />
+            Dog Age Calculator
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Use our advanced calculator with Apple-style controls to discover your dog's age in human years
@@ -306,8 +386,9 @@ const Calculator = () => {
             <div className="space-y-8">
               {/* Input Method Selection */}
               <div className="space-y-4">
-                <label className="block text-lg font-semibold text-gray-800">
-                  🎯 How would you like to input your dog's age?
+                <label className="block text-lg font-semibold text-gray-800 flex items-center gap-2">
+                  <Target className="w-5 h-5 text-orange-600" />
+                  How would you like to input your dog's age?
                 </label>
                 <div className="grid grid-cols-2 gap-3">
                   <button
@@ -318,7 +399,9 @@ const Calculator = () => {
                         : 'border-gray-200 bg-white/60 hover:border-orange-300 hover:bg-white/80'
                     }`}
                   >
-                    <div className="text-2xl mb-2">🎚️</div>
+                    <div className="text-2xl mb-2">
+                      <BarChart3 className="w-6 h-6 mx-auto" />
+                    </div>
                     <div className={`font-semibold ${
                       inputMethod === 'age' ? 'text-white' : 'text-gray-800'
                     }`}>
@@ -338,7 +421,9 @@ const Calculator = () => {
                         : 'border-gray-200 bg-white/60 hover:border-orange-300 hover:bg-white/80'
                     }`}
                   >
-                    <div className="text-2xl mb-2">🎂</div>
+                    <div className="text-2xl mb-2">
+                      <Calendar className="w-6 h-6 mx-auto" />
+                    </div>
                     <div className={`font-semibold ${
                       inputMethod === 'birthday' ? 'text-white' : 'text-gray-800'
                     }`}>
@@ -356,8 +441,9 @@ const Calculator = () => {
               {/* Age Input - Conditional Rendering */}
               {inputMethod === 'age' ? (
                 <div className="space-y-4">
-                  <label className="block text-lg font-semibold text-gray-800">
-                    📅 Age: {dogAge} years {dogAgeMonths > 0 && `${dogAgeMonths} months`}
+                  <label className="block text-lg font-semibold text-gray-800 flex items-center gap-2">
+                    <Calendar className="w-5 h-5 text-orange-600" />
+                    Age: {dogAge} years {dogAgeMonths > 0 && `${dogAgeMonths} months`}
                   </label>
                   {/* Years Slider */}
                   <div className="relative">
@@ -399,8 +485,9 @@ const Calculator = () => {
                 </div>
               ) : (
                 <div className="space-y-4">
-                  <label className="block text-lg font-semibold text-gray-800">
-                    🎂 Dog's Birthday
+                  <label className="block text-lg font-semibold text-gray-800 flex items-center gap-2">
+                    <Gift className="w-5 h-5 text-orange-600" />
+                    Dog's Birthday
                   </label>
                   <div className="relative">
                     <input
@@ -414,8 +501,9 @@ const Calculator = () => {
                   </div>
                   {dogBirthday && (
                     <div className="bg-orange-50 border border-orange-200 rounded-xl p-4">
-                      <div className="text-sm text-orange-800">
-                        <span className="font-semibold">📊 Calculated Age:</span>
+                      <div className="text-sm text-orange-800 flex items-center gap-2">
+                        <BarChart3 className="w-4 h-4" />
+                        <span className="font-semibold">Calculated Age:</span>
                         {(() => {
                           const ageData = calculateAgeFromBirthday(dogBirthday);
                           return ` ${ageData.years} years ${ageData.months > 0 ? `${ageData.months} months` : ''}`;
@@ -428,22 +516,26 @@ const Calculator = () => {
 
               {/* Dog Size Selection */}
               <div className="space-y-4">
-                 <label className="block text-lg font-semibold text-gray-800">
-                   📏 Dog Size
+                 <label className="block text-lg font-semibold text-gray-800 flex items-center gap-2">
+                   <Dog className="w-5 h-5 text-orange-600" />
+                   Dog Size
                  </label>
                  <div className="grid grid-cols-3 gap-3">
                    {dogSizes.map((size) => (
                      <button
                        key={size.id}
                        onClick={() => setDogSize(size.id)}
-                       className={`p-3 rounded-2xl border-2 transition-all duration-300 text-center ${
+                       className={`relative p-3 rounded-2xl border-2 transition-all duration-300 text-center overflow-hidden ${
                          dogSize === size.id
                            ? `border-orange-500 bg-gradient-to-r ${size.color} text-white shadow-lg transform scale-105`
                            : 'border-gray-200 bg-white/60 hover:border-orange-300 hover:bg-white/80'
                        }`}
                      >
-                       <div className="flex flex-col items-center space-y-2">
-                         <div className="text-2xl">{size.emoji}</div>
+                       {/* Background SVG */}
+                       {size.backgroundSvg}
+                       
+                       <div className="relative z-10 flex flex-col items-center space-y-2">
+                         <div className="text-2xl">{size.icon}</div>
                          <div className="flex-1">
                            <div className={`font-semibold text-sm ${dogSize === size.id ? 'text-white' : 'text-gray-800'}`}>
                              {size.name}
@@ -471,7 +563,17 @@ const Calculator = () => {
                     : 'bg-gradient-to-r from-orange-500 to-amber-500 text-white hover:from-orange-600 hover:to-amber-600 hover:scale-105'
                 }`}
               >
-                {inputMethod === 'birthday' ? '🎂 Calculate from Birthday' : '✨ Calculate Human Age'}
+                {inputMethod === 'birthday' ? (
+                  <span className="flex items-center justify-center gap-2">
+                    <Gift className="w-5 h-5" />
+                    Calculate from Birthday
+                  </span>
+                ) : (
+                  <span className="flex items-center justify-center gap-2">
+                    <BarChart3 className="w-5 h-5" />
+                    Calculate Human Age
+                  </span>
+                )}
               </button>
             </div>
 
@@ -479,7 +581,7 @@ const Calculator = () => {
             <div className="flex items-center justify-center">
               {isCalculated && humanAge !== null ? (
                 <div className="text-center bg-gradient-to-br from-white/90 to-white/70 backdrop-blur-xl rounded-3xl p-8 shadow-2xl w-full border border-white/30">
-                  <div className="text-8xl mb-6">{getStageEmoji(ageStage)}</div>
+                  <div className="mb-6 flex justify-center">{getStageIcon(ageStage)}</div>
                   <div className="text-5xl font-bold bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent mb-4">
                     {humanAge} years old
                   </div>
@@ -492,45 +594,51 @@ const Calculator = () => {
                   
                   {/* Dog Name Input */}
                    <div className="mb-6">
-                     <input
-                       type="text"
-                       value={dogName}
-                       onChange={(e) => setDogName(e.target.value)}
-                       placeholder="🐾 Enter your pet's name..."
-                       className="w-full px-4 py-3 bg-white/90 backdrop-blur-sm border border-gray-200/50 rounded-xl focus:ring-3 focus:ring-orange-500/30 focus:border-orange-500 text-center transition-all duration-300 shadow-sm text-gray-700 placeholder-gray-400"
-                     />
+                     <div className="relative">
+                       <Dog className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                       <input
+                         type="text"
+                         value={dogName}
+                         onChange={(e) => setDogName(e.target.value)}
+                         placeholder="Enter your pet's name..."
+                         className="w-full pl-10 pr-4 py-3 bg-white/90 backdrop-blur-sm border border-gray-200/50 rounded-xl focus:ring-3 focus:ring-orange-500/30 focus:border-orange-500 text-center transition-all duration-300 shadow-sm text-gray-700 placeholder-gray-400"
+                       />
+                     </div>
                    </div>
                   
                   {/* Social Sharing */}
                    <div className="space-y-4">
-                     <div className="text-sm font-semibold text-gray-700 mb-3">🎉 Share this amazing result:</div>
+                     <div className="text-sm font-semibold text-gray-700 mb-3 flex items-center justify-center gap-2">
+                       <Share2 className="w-4 h-4" />
+                       Share this amazing result:
+                     </div>
                      <div className="flex flex-wrap justify-center gap-3">
                        <button
                          onClick={shareToTwitter}
                          className="flex items-center space-x-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white px-4 py-2 rounded-xl hover:from-blue-600 hover:to-blue-700 transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105"
                        >
-                         <span>🐦</span>
+                         <Twitter className="w-4 h-4" />
                          <span>Twitter</span>
                        </button>
                        <button
                          onClick={shareToFacebook}
                          className="flex items-center space-x-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white px-4 py-2 rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105"
                        >
-                         <span>📘</span>
+                         <Facebook className="w-4 h-4" />
                          <span>Facebook</span>
                        </button>
                        <button
                          onClick={copyToClipboard}
                          className="flex items-center space-x-2 bg-gradient-to-r from-gray-600 to-gray-700 text-white px-4 py-2 rounded-xl hover:from-gray-700 hover:to-gray-800 transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105"
                        >
-                         <span>📋</span>
+                         <Copy className="w-4 h-4" />
                          <span>Copy Link</span>
                        </button>
                        <button
                          onClick={downloadResult}
                          className="flex items-center space-x-2 bg-gradient-to-r from-green-600 to-green-700 text-white px-4 py-2 rounded-xl hover:from-green-700 hover:to-green-800 transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105"
                        >
-                         <span>💾</span>
+                         <Download className="w-4 h-4" />
                          <span>Download</span>
                        </button>
                      </div>
@@ -538,9 +646,12 @@ const Calculator = () => {
                 </div>
               ) : (
                 <div className="text-center text-gray-400 bg-white/50 backdrop-blur-sm rounded-3xl p-12 border border-gray-200/50">
-                  <div className="text-8xl mb-6">🐕</div>
-                  <div className="text-xl">
-                    Set your dog's age and size to see the magic! ✨
+                  <div className="mb-6 flex justify-center">
+                    <Dog className="w-20 h-20 text-gray-400" />
+                  </div>
+                  <div className="text-xl flex items-center justify-center gap-2">
+                    Set your dog's age and size to see the magic!
+                    <BarChart3 className="w-5 h-5" />
                   </div>
                 </div>
               )}

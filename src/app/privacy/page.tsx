@@ -1,3 +1,5 @@
+import { Info } from 'lucide-react';
+
 export default function Privacy() {
   const lastUpdated = "January 15, 2024";
 
@@ -27,7 +29,9 @@ export default function Privacy() {
             
             <div className="bg-blue-50 border-l-4 border-blue-400 p-6 mb-8">
               <div className="flex">
-                <div className="text-2xl mr-3">ℹ️</div>
+                <div className="flex items-center justify-center w-8 h-8 mr-3 flex-shrink-0">
+                  <Info className="w-6 h-6 text-blue-600" />
+                </div>
                 <div>
                   <h3 className="text-lg font-semibold text-blue-900 mb-2">Quick Summary</h3>
                   <p className="text-blue-800">

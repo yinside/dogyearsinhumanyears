@@ -1,42 +1,43 @@
 'use client';
 
 import Link from 'next/link';
+import { Dog, Dna, Activity, Smile, Salad, Stethoscope } from 'lucide-react';
 
 const InterestingFacts = () => {
   const facts = [
     {
       id: '1',
-      icon: '🐕',
+icon: <Dog className="w-10 h-10 text-orange-500" />,
       title: 'Size Matters',
       description: 'Smaller dogs typically live longer than larger breeds. A Chihuahua can live 14-16 years, while a Great Dane averages 8-10 years.'
     },
     {
       id: '2', 
-      icon: '🧬',
+icon: <Dna className="w-10 h-10 text-blue-500" />,
       title: 'Genetic Factors',
       description: 'Mixed breed dogs often live longer than purebreds due to hybrid vigor, which reduces the risk of inherited genetic disorders.'
     },
     {
       id: '3',
-      icon: '🏃',
+icon: <Activity className="w-10 h-10 text-green-500" />,
       title: 'Exercise Impact',
       description: 'Regular exercise can add 1-2 years to your dog\'s life by maintaining healthy weight and cardiovascular function.'
     },
     {
       id: '4',
-      icon: '🦷',
+icon: <Smile className="w-10 h-10 text-purple-500" />,
       title: 'Dental Health',
       description: 'Dogs with good dental hygiene live longer. Dental disease can lead to heart, liver, and kidney problems if left untreated.'
     },
     {
       id: '5',
-      icon: '🥗',
+icon: <Salad className="w-10 h-10 text-emerald-500" />,
       title: 'Nutrition Matters',
       description: 'A balanced diet with proper portions can extend your dog\'s life by preventing obesity and related health issues.'
     },
     {
       id: '6',
-      icon: '👨‍⚕️',
+icon: <Stethoscope className="w-10 h-10 text-red-500" />,
       title: 'Preventive Care',
       description: 'Regular vet checkups and vaccinations can detect health issues early and add years to your dog\'s life.'
     }
@@ -62,7 +63,7 @@ const InterestingFacts = () => {
             key={fact.id}
             className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
           >
-            <div className="text-4xl mb-4 text-center">
+            <div className="flex justify-center mb-4">
               {fact.icon}
             </div>
             <h3 className="text-xl font-semibold text-gray-900 mb-3 text-center">

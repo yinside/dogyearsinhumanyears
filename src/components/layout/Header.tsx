@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
+import { Dog } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,7 +13,7 @@ const Header = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <span className="text-2xl">🐕</span>
+            <Dog className="w-8 h-8 text-orange-500" />
             <span className="text-xl font-bold warm-text-gradient">
               Dog years in human years
             </span>
@@ -22,9 +23,9 @@ const Header = () => {
           <nav className="hidden md:flex items-center space-x-8">
             <Link 
               href="/#calculator" 
-              className="text-gray-700 hover:text-orange-600 transition-colors duration-200"
+              className="bg-orange-500 text-white px-4 py-2 rounded-lg font-semibold hover:bg-orange-600 transition-colors duration-200"
             >
-              Calculator
+              Calculator Now
             </Link>
             <Link 
               href="/#how-it-works" 
@@ -67,10 +68,10 @@ const Header = () => {
             <div className="flex flex-col space-y-4">
               <Link 
                 href="/#calculator" 
-                className="text-gray-700 hover:text-orange-600 transition-colors duration-200"
+                className="bg-orange-500 text-white px-4 py-2 rounded-lg font-semibold hover:bg-orange-600 transition-colors duration-200 inline-block text-center"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Calculator
+                Calculator Now
               </Link>
               <Link 
                 href="/#how-it-works" 

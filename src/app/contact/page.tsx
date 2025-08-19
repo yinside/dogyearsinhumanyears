@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Mail, Clock, Dog, CheckCircle } from 'lucide-react';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -57,7 +58,9 @@ export default function Contact() {
             
             {submitted ? (
               <div className="text-center py-8">
-                <div className="text-6xl mb-4">✅</div>
+                <div className="flex justify-center mb-4">
+                  <CheckCircle className="w-16 h-16 text-green-500" />
+                </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">
                   Message Sent Successfully!
                 </h3>
@@ -169,7 +172,9 @@ export default function Contact() {
               </h2>
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
-                  <div className="text-2xl">📧</div>
+                  <div className="flex items-center justify-center w-12 h-12 bg-orange-100 rounded-full flex-shrink-0">
+                    <Mail className="w-6 h-6 text-orange-500" />
+                  </div>
                   <div>
                     <h3 className="font-semibold text-gray-900">Email Us</h3>
                     <p className="text-gray-600">hello@dogyearscalculator.com</p>
@@ -178,7 +183,9 @@ export default function Contact() {
                 </div>
                 
                 <div className="flex items-start space-x-4">
-                  <div className="text-2xl">⏰</div>
+                  <div className="flex items-center justify-center w-12 h-12 bg-orange-100 rounded-full flex-shrink-0">
+                    <Clock className="w-6 h-6 text-orange-500" />
+                  </div>
                   <div>
                     <h3 className="font-semibold text-gray-900">Response Time</h3>
                     <p className="text-gray-600">Monday - Friday: Within 24 hours</p>
@@ -187,7 +194,9 @@ export default function Contact() {
                 </div>
                 
                 <div className="flex items-start space-x-4">
-                  <div className="text-2xl">🐕</div>
+                  <div className="flex items-center justify-center w-12 h-12 bg-orange-100 rounded-full flex-shrink-0">
+                    <Dog className="w-6 h-6 text-orange-500" />
+                  </div>
                   <div>
                     <h3 className="font-semibold text-gray-900">Pet Emergency</h3>
                     <p className="text-gray-600">For urgent pet health concerns, please contact your local veterinarian immediately.</p>

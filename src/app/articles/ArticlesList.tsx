@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { Dog } from 'lucide-react';
 import { getArticles, Article } from '@/lib/contentful';
 
 const ArticlesList = () => {
@@ -141,7 +142,7 @@ const ArticlesList = () => {
               href="/#calculator"
               className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-semibold rounded-full hover:from-orange-600 hover:to-amber-600 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
             >
-              <span className="mr-2">🐕</span>
+              <Dog className="w-5 h-5 mr-2" />
               Calculate Now
             </Link>
           </div>

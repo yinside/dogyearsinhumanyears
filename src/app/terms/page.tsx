@@ -1,3 +1,5 @@
+import { AlertTriangle, Dog } from 'lucide-react';
+
 export default function Terms() {
   const lastUpdated = "January 15, 2024";
 
@@ -27,7 +29,9 @@ export default function Terms() {
             
             <div className="bg-amber-50 border-l-4 border-amber-400 p-6 mb-8">
               <div className="flex">
-                <div className="text-2xl mr-3">⚠️</div>
+                <div className="flex items-center justify-center w-8 h-8 mr-3 flex-shrink-0">
+                  <AlertTriangle className="w-6 h-6 text-amber-600" />
+                </div>
                 <div>
                   <h3 className="text-lg font-semibold text-amber-900 mb-2">Important Notice</h3>
                   <p className="text-amber-800">
@@ -157,7 +161,9 @@ export default function Terms() {
 
             <div className="bg-green-50 border-l-4 border-green-400 p-6 mt-8">
               <div className="flex">
-                <div className="text-2xl mr-3">🐕</div>
+                <div className="flex items-center justify-center w-8 h-8 mr-3 flex-shrink-0">
+                  <Dog className="w-6 h-6 text-green-600" />
+                </div>
                 <div>
                   <h3 className="text-lg font-semibold text-green-900 mb-2">Thank You</h3>
                   <p className="text-green-800">

@@ -1,31 +1,33 @@
+import { Edit, Ruler, Calculator, Target } from 'lucide-react';
+
 const HowItWorks = () => {
   const steps = [
     {
       step: 1,
       title: "Enter Your Dog's Age",
       description: "Input your dog's current age in years. You can use decimals for more precision (e.g., 2.5 years).",
-      icon: "📝",
+icon: <Edit className="w-10 h-10 text-blue-500" />,
       color: "from-blue-500 to-blue-600"
     },
     {
       step: 2,
       title: "Select Dog Size",
       description: "Choose your dog's size category. Smaller dogs generally live longer and age differently than larger breeds.",
-      icon: "📏",
+icon: <Ruler className="w-10 h-10 text-green-500" />,
       color: "from-green-500 to-green-600"
     },
     {
       step: 3,
       title: "Advanced Calculation",
       description: "Our algorithm uses veterinary research to calculate the equivalent human age based on size-specific aging patterns.",
-      icon: "🧮",
+icon: <Calculator className="w-10 h-10 text-purple-500" />,
       color: "from-purple-500 to-purple-600"
     },
     {
       step: 4,
       title: "Get Results",
       description: "Receive your dog&apos;s human age equivalent along with their current life stage and health insights.",
-      icon: "🎯",
+icon: <Target className="w-10 h-10 text-orange-500" />,
       color: "from-orange-500 to-orange-600"
     }
   ];
@@ -56,7 +58,7 @@ const HowItWorks = () => {
                 <div className={`w-12 h-12 bg-gradient-to-r ${step.color} rounded-full flex items-center justify-center text-white font-bold text-lg mb-4 mx-auto`}>
                   {step.step}
                 </div>
-                <div className="text-4xl mb-4 text-center">{step.icon}</div>
+                <div className="flex justify-center mb-4">{step.icon}</div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3 text-center">
                   {step.title}
                 </h3>

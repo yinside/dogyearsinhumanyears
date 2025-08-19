@@ -78,11 +78,12 @@ body {
 }
 
 .dog-paw::before {
-  content: '🐾';
+  content: '';
   position: absolute;
   opacity: 0.1;
   font-size: 2rem;
   animation: float 3s ease-in-out infinite;
+  /* Emoji removed - using SVG icons in components instead */
 }
 
 @keyframes float {

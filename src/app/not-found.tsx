@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { Dog, Bone, Heart, Gift, Home, CircleDot, BookOpen, Lightbulb } from 'lucide-react';
 
 const NotFound = () => {
   const [dogAge, setDogAge] = useState(1);
@@ -49,18 +50,18 @@ const NotFound = () => {
       <div className="max-w-4xl mx-auto text-center">
         {/* Animated Dog */}
         <div className="mb-8 relative">
-          <div className="text-9xl mb-4 animate-bounce">
-            🐕
+          <div className="mb-4 animate-bounce flex justify-center">
+            <Dog className="w-36 h-36 text-orange-500" />
           </div>
-          <div className={`text-4xl absolute -bottom-2 right-1/2 transform translate-x-1/2 transition-transform duration-300 ${isWagging ? 'rotate-12' : '-rotate-12'}`}>
-            🦴
+          <div className={`absolute -bottom-2 right-1/2 transform translate-x-1/2 transition-transform duration-300 ${isWagging ? 'rotate-12' : '-rotate-12'}`}>
+            <Bone className="w-16 h-16 text-amber-500" />
           </div>
         </div>
 
         {/* 404 Message */}
         <div className="mb-8">
-          <h1 className="text-6xl md:text-8xl font-bold text-orange-500 mb-4">
-            4🐾4
+          <h1 className="text-6xl md:text-8xl font-bold text-orange-500 mb-4 flex items-center justify-center gap-4">
+            4<Heart className="w-16 h-16 md:w-20 md:h-20" />4
           </h1>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Oops! This page went to the dog park!
@@ -72,7 +73,9 @@ const NotFound = () => {
 
         {/* Fun Dog Age Calculation */}
         <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-8 max-w-md mx-auto">
-          <div className="text-4xl mb-4">🎂</div>
+          <div className="mb-4 flex justify-center">
+            <Gift className="w-16 h-16 text-orange-500" />
+          </div>
           <h3 className="text-xl font-semibold text-gray-900 mb-3">
             While you're here...
           </h3>
@@ -80,8 +83,9 @@ const NotFound = () => {
             Did you know a {dogAge}-year-old dog is about <span className="font-bold text-orange-600">{calculateHumanAge(dogAge)} years old</span> in human years?
           </p>
           <div className="bg-gradient-to-r from-orange-100 to-amber-100 rounded-lg p-4">
-            <p className="text-sm text-gray-700 italic transition-opacity duration-500">
-              💡 Fun fact: {dogFacts[currentFactIndex]}
+            <p className="text-sm text-gray-700 italic transition-opacity duration-500 flex items-center gap-2">
+              <Lightbulb className="w-4 h-4 text-amber-600" />
+              Fun fact: {dogFacts[currentFactIndex]}
             </p>
           </div>
         </div>
@@ -92,31 +96,39 @@ const NotFound = () => {
             href="/"
             className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-semibold rounded-full hover:from-orange-600 hover:to-amber-600 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
           >
-            <span className="mr-2">🏠</span>
+            <Home className="mr-2 w-5 h-5" />
             Go Home
           </Link>
           <Link
             href="/#calculator"
             className="inline-flex items-center px-8 py-4 bg-white text-orange-600 font-semibold rounded-full border-2 border-orange-200 hover:border-orange-300 hover:bg-orange-50 transition-all duration-200 shadow-md hover:shadow-lg"
           >
-            <span className="mr-2">🐕</span>
+            <Dog className="mr-2 w-5 h-5" />
             Calculate Dog Age
           </Link>
           <Link
             href="/articles"
             className="inline-flex items-center px-8 py-4 bg-white text-orange-600 font-semibold rounded-full border-2 border-orange-200 hover:border-orange-300 hover:bg-orange-50 transition-all duration-200 shadow-md hover:shadow-lg"
           >
-            <span className="mr-2">📚</span>
+            <BookOpen className="mr-2 w-5 h-5" />
             Read Articles
           </Link>
         </div>
 
         {/* Floating Elements */}
         <div className="relative">
-          <div className="absolute -top-20 -left-10 text-4xl animate-float opacity-30">🐾</div>
-          <div className="absolute -top-16 -right-8 text-3xl animate-bounce-slow opacity-30">🦴</div>
-          <div className="absolute -bottom-10 left-8 text-5xl animate-pulse-slow opacity-30">🎾</div>
-          <div className="absolute -bottom-8 -right-12 text-3xl animate-float opacity-30">🐕‍🦺</div>
+          <div className="absolute -top-20 -left-10 animate-float opacity-30">
+            <Heart className="w-12 h-12 text-orange-400" />
+          </div>
+          <div className="absolute -top-16 -right-8 animate-bounce-slow opacity-30">
+            <Bone className="w-8 h-8 text-orange-400" />
+          </div>
+          <div className="absolute -bottom-10 left-8 animate-pulse-slow opacity-30">
+            <CircleDot className="w-16 h-16 text-orange-400" />
+          </div>
+          <div className="absolute -bottom-8 -right-12 animate-float opacity-30">
+            <Dog className="w-8 h-8 text-orange-400" />
+          </div>
         </div>
 
         {/* Search Suggestion */}
