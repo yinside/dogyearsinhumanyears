@@ -7,7 +7,7 @@ import Footer from '@/components/layout/Footer';
 export const metadata: Metadata = {
   title: "Dog Years in Human Years Calculator - Accurate Pet Age Converter",
   description: "Convert your dog's age to human years with our scientifically accurate calculator. Discover how old your dog is in human years, learn about canine aging, and get expert pet care insights.",
-  keywords: "dog years in human years, dog age calculator, pet age converter, canine aging, dog years calculator, how old is my dog in human years, dog lifespan, pet health, dog care",
+  keywords: "dog years in human years, dog years to human years, dog in human years, dog age calculator, how old is my dog in human years, convert human years to dog years",
   authors: [{ name: "Dog Years in Human Years Team" }],
   metadataBase: new URL('https://www.dogyearsinhumanyears.com'),
   icons: {
