@@ -1,152 +1,132 @@
-'use client';
-
-import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { Dog } from 'lucide-react';
-import { getArticles, Article } from '@/lib/contentful';
+
+const articles = [
+  {
+    slug: 'labrador-retriever-lifespan',
+    title: 'Labrador Retriever Lifespan: How Long Do Labs Live?',
+    description: 'Learn about the average Labrador Retriever lifespan, common health issues, and tips to help your Lab live a longer, healthier life.',
+    category: 'Breed Lifespan',
+    date: 'January 15, 2026',
+  },
+  {
+    slug: 'german-shepherd-lifespan',
+    title: 'German Shepherd Lifespan and Health Guide',
+    description: 'Everything you need to know about German Shepherd life expectancy, common health concerns, and how to maximize your GSD&apos;s healthy years.',
+    category: 'Breed Lifespan',
+    date: 'January 15, 2026',
+  },
+  {
+    slug: 'golden-retriever-lifespan',
+    title: 'Golden Retriever Lifespan: Complete Care Guide',
+    description: 'Discover how long Golden Retrievers live, factors that affect their lifespan, and expert tips for keeping your Golden healthy through every life stage.',
+    category: 'Breed Lifespan',
+    date: 'January 15, 2026',
+  },
+  {
+    slug: 'french-bulldog-lifespan',
+    title: 'French Bulldog Lifespan: What French Bulldog Owners Should Know',
+    description: 'A comprehensive guide to French Bulldog life expectancy, breed-specific health issues, and how to provide the best care for your Frenchie.',
+    category: 'Breed Lifespan',
+    date: 'January 15, 2026',
+  },
+  {
+    slug: 'beagle-lifespan',
+    title: 'Beagle Lifespan: How Long Do Beagles Live?',
+    description: 'Learn about Beagle life expectancy, common health problems, nutrition needs, and how to ensure your Beagle stays healthy for years to come.',
+    category: 'Breed Lifespan',
+    date: 'January 15, 2026',
+  },
+  {
+    slug: 'chihuahua-lifespan',
+    title: 'Chihuahua Lifespan: Why Chihuahuas Live So Long',
+    description: 'Discover why Chihuahuas are one of the longest-living dog breeds, their average lifespan, and how to care for a senior Chihuahua.',
+    category: 'Breed Lifespan',
+    date: 'January 15, 2026',
+  },
+  {
+    slug: 'poodle-lifespan',
+    title: 'Poodle Lifespan: Toy, Miniature, and Standard Poodle Life Expectancy',
+    description: 'Compare Poodle lifespans across all sizes. Learn about Toy Poodle, Miniature Poodle, and Standard Poodle life expectancy and health tips.',
+    category: 'Breed Lifespan',
+    date: 'January 15, 2026',
+  },
+  {
+    slug: 'yorkshire-terrier-lifespan',
+    title: 'Yorkshire Terrier Lifespan: How Long Do Yorkies Live?',
+    description: 'A complete guide to Yorkshire Terrier life expectancy, common Yorkie health problems, and expert care tips for every stage of your Yorkie&apos;s life.',
+    category: 'Breed Lifespan',
+    date: 'January 15, 2026',
+  },
+  {
+    slug: 'boxer-lifespan',
+    title: 'Boxer Lifespan: How Long Do Boxers Live and How to Extend It',
+    description: 'Learn about Boxer life expectancy, breed-specific health challenges, and proven strategies to help your Boxer live a longer, healthier life.',
+    category: 'Breed Lifespan',
+    date: 'January 15, 2026',
+  },
+  {
+    slug: 'great-dane-lifespan',
+    title: 'Great Dane Lifespan: Understanding the Gentle Giant&apos;s Years',
+    description: 'Everything you need to know about Great Dane life expectancy, the challenges of giant breed aging, and how to care for your Dane at every age.',
+    category: 'Breed Lifespan',
+    date: 'January 15, 2026',
+  },
+];
 
 const ArticlesList = () => {
-  const [articles, setArticles] = useState<Article[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  const formatDate = (dateString: string) => {
-    if (!dateString) return 'Date not available';
-    
-    const date = new Date(dateString);
-    if (isNaN(date.getTime())) {
-      console.log('Invalid date string:', dateString);
-      return 'Date not available';
-    }
-    
-    return date.toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
-  };
-
-
-
-  useEffect(() => {
-    const fetchArticles = async () => {
-      try {
-        const response = await fetch('/api/articles');
-        const data = await response.json();
-        
-        if (data.success && data.articles && data.articles.length > 0) {
-          // Use articles directly from API (already in correct format)
-          setArticles(data.articles);
-        } else {
-          // No articles available
-          setArticles([]);
-        }
-      } catch (error) {
-        // If API fails, show empty state
-        setArticles([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchArticles();
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-orange-50 to-amber-50 py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-500 mx-auto"></div>
-            <p className="mt-4 text-gray-600">Loading articles...</p>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-amber-50 py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            <span className="warm-text-gradient">Dog Years</span> Articles
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Expert insights on canine aging, health, and care to help you understand your dog better.
-          </p>
-        </div>
+    <div className="articles-list">
+      <div className="section-box">
+        <h2>All Articles</h2>
+        <p className="text-muted mb-15">
+          Browse our collection of articles about dog aging, breed lifespans, and pet care tips.
+        </p>
+      </div>
 
-        {articles.length === 0 ? (
-          <div className="text-center py-12">
-            <p className="text-gray-600 text-lg">No articles available. Please add content to Contentful.</p>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {articles.map((article, index) => {
-              const imageUrl = article.featuredImage || 'https://images.unsplash.com/photo-1552053831-71594a27632d?w=800';
-            
-            return (
-              <article key={article.slug || index} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group">
-                <Link href={`/articles/${article.slug}`} className="block">
-                  <div className="relative overflow-hidden cursor-pointer">
-                    <img
-                      src={imageUrl}
-                      alt={article.title}
-                      className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                </Link>
-                
-                <div className="p-6">
-                  <div className="flex items-center text-sm text-gray-500 mb-3">
-                    <time dateTime={article.publishedDate}>
-                      {formatDate(article.publishedDate)}
-                    </time>
-                  </div>
-                  
-                  <Link href={`/articles/${article.slug}`}>
-                    <h2 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-orange-600 transition-colors duration-200 cursor-pointer">
-                      {article.title}
-                    </h2>
-                  </Link>
-                  
-                  <p className="text-gray-600 mb-4 line-clamp-3">
-                    {article.excerpt}
-                  </p>
-                  
-                  <Link
-                    href={`/articles/${article.slug}`}
-                    className="inline-flex items-center text-orange-600 font-semibold hover:text-orange-700 transition-colors duration-200"
-                  >
-                    Read More
-                    <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </Link>
-                </div>
-              </article>
-              );
-            })}
-          </div>
-        )}
-
-        <div className="mt-16 text-center">
-          <div className="bg-white rounded-2xl shadow-lg p-8 max-w-2xl mx-auto">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              Want to Calculate Your Dog's Age?
-            </h2>
-            <p className="text-gray-600 mb-6">
-              Use our scientific calculator to find out how old your dog is in human years.
-            </p>
-            <Link
-              href="/#calculator"
-              className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-semibold rounded-full hover:from-orange-600 hover:to-amber-600 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl"
-            >
-              <Dog className="w-5 h-5 mr-2" />
-              Calculate Now
-            </Link>
+      {articles.map((article, index) => (
+        <div key={article.slug} className="section-box" style={{ padding: '16px 20px' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', alignItems: 'flex-start' }}>
+            <div style={{
+              background: '#e8e8e8',
+              border: '1px solid #ccc',
+              padding: '3px 8px',
+              fontSize: '12px',
+              fontWeight: 'bold',
+              color: '#555',
+              flexShrink: 0,
+              minWidth: '80px',
+              textAlign: 'center',
+            }}>
+              {String(index + 1).padStart(2, '0')}
+            </div>
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <h3 style={{ fontSize: '16px', margin: '0 0 6px 0' }}>
+                <Link href={`/articles/${article.slug}`}>{article.title}</Link>
+              </h3>
+              <p style={{ fontSize: '13px', color: '#555', marginBottom: '6px' }}>
+                {article.description}
+              </p>
+              <div style={{ fontSize: '11px', color: '#999' }}>
+                <span style={{
+                  background: '#f0f0ff',
+                  border: '1px solid #d5d5ff',
+                  padding: '1px 6px',
+                  marginRight: '8px',
+                }}>
+                  {article.category}
+                </span>
+                <span>{article.date}</span>
+              </div>
+            </div>
           </div>
         </div>
+      ))}
+
+      <div className="section-box" style={{ textAlign: 'center' }}>
+        <p className="text-muted">
+          <strong>More articles coming soon!</strong> We are constantly adding new breed lifespan guides and
+          dog care articles. Check back regularly or <Link href="/contact">contact us</Link> to suggest a topic.
+        </p>
       </div>
     </div>
   );

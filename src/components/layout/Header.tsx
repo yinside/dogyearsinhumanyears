@@ -2,101 +2,49 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { Dog } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="bg-white/90 backdrop-blur-sm shadow-sm sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <Dog className="w-8 h-8 text-orange-500" />
-            <span className="text-xl font-bold warm-text-gradient">
-              Dog years in human years
-            </span>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <Link 
-              href="/#calculator" 
-              className="bg-orange-500 text-white px-4 py-2 rounded-lg font-semibold hover:bg-orange-600 transition-colors duration-200"
-            >
-              Calculator Now
-            </Link>
-            <Link 
-              href="/#how-it-works" 
-              className="text-gray-700 hover:text-orange-600 transition-colors duration-200"
-            >
-              How It Works
-            </Link>
-            <Link 
-              href="/#facts" 
-              className="text-gray-700 hover:text-orange-600 transition-colors duration-200"
-            >
-              Fun Facts
-            </Link>
-            <Link 
-              href="/articles" 
-              className="text-gray-700 hover:text-orange-600 transition-colors duration-200"
-            >
-              Articles
-            </Link>
-          </nav>
-
-          {/* Mobile menu button */}
-          <button
-            className="md:hidden p-2 rounded-md text-gray-700 hover:text-orange-600 hover:bg-orange-50"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              {isMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
+    <header className="site-header">
+      <div className="header-top">
+        <div className="container-main">
+          <span>Trusted by dog owners since 2013 &bull; Updated for 2026 &bull; 1,248,293 calculations made</span>
         </div>
+      </div>
 
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-200">
-            <div className="flex flex-col space-y-4">
-              <Link 
-                href="/#calculator" 
-                className="bg-orange-500 text-white px-4 py-2 rounded-lg font-semibold hover:bg-orange-600 transition-colors duration-200 inline-block text-center"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Calculator Now
-              </Link>
-              <Link 
-                href="/#how-it-works" 
-                className="text-gray-700 hover:text-orange-600 transition-colors duration-200"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                How It Works
-              </Link>
-              <Link 
-                href="/#facts" 
-                className="text-gray-700 hover:text-orange-600 transition-colors duration-200"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Fun Facts
-              </Link>
-              <Link 
-                href="/articles" 
-                className="text-gray-700 hover:text-orange-600 transition-colors duration-200"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Articles
-              </Link>
-            </div>
+      <div className="header-main">
+        <div className="container-main">
+          <Link href="/" className="site-logo">
+            Dog Years in Human Years
+          </Link>
+          <div className="site-tagline">
+            The most accurate dog age calculator on the web. Convert your dog&apos;s age to human years instantly.
           </div>
-        )}
+        </div>
+      </div>
+
+      <div className="nav-bar">
+        <div className="container-main">
+          <button
+            className="mobile-menu-btn"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle navigation menu"
+          >
+            {isMenuOpen ? 'Close Menu' : 'Navigation Menu'}
+          </button>
+          <ul className={`nav-list${isMenuOpen ? ' open' : ''}`}>
+            <li><Link href="/" className="active">Home</Link></li>
+            <li><Link href="/#calculator">Dog Age Calculator</Link></li>
+            <li><Link href="/#age-chart">Dog Age Chart</Link></li>
+            <li><Link href="/#faq">FAQ</Link></li>
+            <li><Link href="/#article">Dog Aging Guide</Link></li>
+            <li><Link href="/articles">Articles</Link></li>
+            <li><Link href="/about">About</Link></li>
+            <li><Link href="/contact">Contact</Link></li>
+          </ul>
+        </div>
       </div>
     </header>
   );
