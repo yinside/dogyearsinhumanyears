@@ -40,7 +40,7 @@ const Header = () => {
             <li><Link href="/#age-chart">Dog Age Chart</Link></li>
             <li><Link href="/#faq">FAQ</Link></li>
             <li><Link href="/#article">Dog Aging Guide</Link></li>
-            <li><Link href="/articles">Articles</Link></li>
+            <li><Link href="/guides">Guides</Link></li>
             <li><Link href="/about">About</Link></li>
             <li><Link href="/contact">Contact</Link></li>
           </ul>

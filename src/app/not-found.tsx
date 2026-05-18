@@ -40,7 +40,7 @@ export default function NotFound() {
         <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', flexWrap: 'wrap', marginTop: '20px' }}>
           <Link href="/" className="btn btn-primary">Go to Homepage</Link>
           <Link href="/#calculator" className="btn">Try the Calculator</Link>
-          <Link href="/articles" className="btn">Read Articles</Link>
+          <Link href="/guides" className="btn">Browse Guides</Link>
           <Link href="/contact" className="btn">Contact Us</Link>
         </div>
 

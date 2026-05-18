@@ -1,9 +1,8 @@
 import { MetadataRoute } from 'next'
-import { getArticles } from '@/lib/contentful'
+import { getAllBreedSlugs } from './guides/breedData'
 
 const baseUrl = 'https://www.dogyearsinhumanyears.com'
 
-// Static pages configuration
 const staticPages = [
   {
     url: baseUrl,
@@ -12,7 +11,7 @@ const staticPages = [
     priority: 1.0,
   },
   {
-    url: `${baseUrl}/articles`,
+    url: `${baseUrl}/guides`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
     priority: 0.9,
@@ -43,25 +42,15 @@ const staticPages = [
   },
 ]
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  try {
-    // Try to get articles from Contentful
-    const articles = await getArticles()
-    
-    // Generate article URLs with proper encoding
-    const articleUrls = articles.map((article) => ({
-      url: `${baseUrl}/articles/${encodeURIComponent(article.slug)}`,
-      lastModified: new Date(article.publishedDate),
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    }))
-    
-    // Combine static pages and article pages
-    return [...staticPages, ...articleUrls]
-  } catch (error) {
-    console.error('Failed to generate dynamic sitemap, falling back to static pages:', error)
-    
-    // Fallback to static pages only if Contentful fails
-    return staticPages
-  }
+export default function sitemap(): MetadataRoute.Sitemap {
+  const breedSlugs = getAllBreedSlugs()
+
+  const breedUrls = breedSlugs.map((slug) => ({
+    url: `${baseUrl}/guides/${slug}`,
+    lastModified: new Date('2026-01-15'),
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }))
+
+  return [...staticPages, ...breedUrls]
 }

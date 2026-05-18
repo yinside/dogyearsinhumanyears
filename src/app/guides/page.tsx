@@ -1,15 +1,22 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import ArticlesList from './ArticlesList';
 
-export default function Articles() {
+export const metadata: Metadata = {
+  title: 'Dog Breed Lifespan Guides | Dog Age Calculator',
+  description: 'Browse our collection of 10 in-depth dog breed lifespan guides. Learn about Labrador Retriever, German Shepherd, Golden Retriever, French Bulldog, Beagle, Chihuahua, Poodle, Yorkie, Boxer, and Great Dane lifespans.',
+  keywords: 'dog breed lifespan, how long do dogs live, breed life expectancy, dog health guides, breed lifespan guide',
+};
+
+export default function Guides() {
   return (
     <div className="container-main" style={{ paddingTop: '15px', paddingBottom: '30px' }}>
       <div className="breadcrumb">
-        <Link href="/">Home</Link> &raquo; Articles
+        <Link href="/">Home</Link> &raquo; Guides
       </div>
 
       <div className="section-box">
-        <h1 style={{ marginBottom: '5px' }}>Dog Breed Articles &amp; Care Guides</h1>
+        <h1 style={{ marginBottom: '5px' }}>Dog Breed Guides &amp; Care Resources</h1>
         <p style={{ fontSize: '14px', color: '#555' }}>
           In-depth guides about dog breed lifespans, health concerns, and expert care tips.
           Learn how to help your dog live a longer, healthier life.
@@ -37,12 +44,12 @@ export default function Articles() {
           </div>
 
           <div className="widget">
-            <h3>Article Categories</h3>
+            <h3>Guide Categories</h3>
             <ul>
-              <li><Link href="/articles">Breed Lifespans (10 articles)</Link></li>
-              <li><Link href="/articles">Dog Health Tips (coming soon)</Link></li>
-              <li><Link href="/articles">Puppy Care (coming soon)</Link></li>
-              <li><Link href="/articles">Senior Dog Care (coming soon)</Link></li>
+              <li><Link href="/guides">Breed Lifespans (10 guides)</Link></li>
+              <li><Link href="/guides">Dog Health Tips (coming soon)</Link></li>
+              <li><Link href="/guides">Puppy Care (coming soon)</Link></li>
+              <li><Link href="/guides">Senior Dog Care (coming soon)</Link></li>
             </ul>
           </div>
 

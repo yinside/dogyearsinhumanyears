@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 const SidebarWidgets = () => {
   const [visitorCount, setVisitorCount] = useState(1248293);
@@ -24,16 +25,16 @@ const SidebarWidgets = () => {
   ];
 
   const popularBreeds = [
-    { breed: 'Labrador Retriever', lifespan: '10-12 years' },
-    { breed: 'German Shepherd', lifespan: '9-12 years' },
-    { breed: 'Golden Retriever', lifespan: '10-13 years' },
-    { breed: 'Bulldog', lifespan: '8-10 years' },
-    { breed: 'Beagle', lifespan: '12-15 years' },
-    { breed: 'Poodle (Toy)', lifespan: '14-16 years' },
-    { breed: 'Yorkshire Terrier', lifespan: '13-15 years' },
-    { breed: 'Boxer', lifespan: '9-12 years' },
-    { breed: 'Dachshund', lifespan: '12-15 years' },
-    { breed: 'Great Dane', lifespan: '8-10 years' },
+    { breed: 'Labrador Retriever', lifespan: '10-12 years', slug: 'labrador-retriever-lifespan' },
+    { breed: 'German Shepherd', lifespan: '9-12 years', slug: 'german-shepherd-lifespan' },
+    { breed: 'Golden Retriever', lifespan: '10-13 years', slug: 'golden-retriever-lifespan' },
+    { breed: 'Bulldog', lifespan: '8-10 years', slug: 'french-bulldog-lifespan' },
+    { breed: 'Beagle', lifespan: '12-15 years', slug: 'beagle-lifespan' },
+    { breed: 'Poodle (Toy)', lifespan: '14-16 years', slug: 'poodle-lifespan' },
+    { breed: 'Yorkshire Terrier', lifespan: '13-15 years', slug: 'yorkshire-terrier-lifespan' },
+    { breed: 'Boxer', lifespan: '9-12 years', slug: 'boxer-lifespan' },
+    { breed: 'Dachshund', lifespan: '12-15 years', slug: '' },
+    { breed: 'Great Dane', lifespan: '8-10 years', slug: 'great-dane-lifespan' },
   ];
 
   const relatedTools = [
@@ -55,12 +56,6 @@ const SidebarWidgets = () => {
         <div className="text-small text-muted mt-10">and counting...</div>
       </div>
 
-      {/* Ad Space */}
-      <div className="ad-space ad-sidebar">
-        <div className="ad-label">Advertisement</div>
-        <div style={{ padding: '20px', color: '#999' }}>Ad Space - 300x250</div>
-      </div>
-
       {/* Recent Searches */}
       <div className="widget">
         <h3>Recent Searches</h3>
@@ -77,11 +72,15 @@ const SidebarWidgets = () => {
 
       {/* Popular Breeds */}
       <div className="widget">
-        <h3>Popular Dog Breeds &amp; Lifespan</h3>
+        <h3>Popular Breeds &amp; Lifespan</h3>
         <ul>
           {popularBreeds.map((item, i) => (
             <li key={i}>
-              <strong>{item.breed}</strong>
+              {item.slug ? (
+                <Link href={`/guides/${item.slug}`}><strong>{item.breed}</strong></Link>
+              ) : (
+                <strong>{item.breed}</strong>
+              )}
               <span className="text-muted" style={{ display: 'block', fontSize: '11px' }}>
                 {item.lifespan}
               </span>
@@ -115,10 +114,17 @@ const SidebarWidgets = () => {
         </ul>
       </div>
 
-      {/* Another Ad Space */}
-      <div className="ad-space ad-sidebar">
-        <div className="ad-label">Advertisement</div>
-        <div style={{ padding: '20px', color: '#999' }}>Ad Space - 300x250</div>
+      {/* Breed Articles Link */}
+      <div className="widget">
+        <h3>Breed Lifespan Guides</h3>
+        <ul>
+          <li><Link href="/guides/labrador-retriever-lifespan">Labrador Retriever Lifespan</Link></li>
+          <li><Link href="/guides/german-shepherd-lifespan">German Shepherd Lifespan</Link></li>
+          <li><Link href="/guides/golden-retriever-lifespan">Golden Retriever Lifespan</Link></li>
+          <li><Link href="/guides/french-bulldog-lifespan">French Bulldog Lifespan</Link></li>
+          <li><Link href="/guides/chihuahua-lifespan">Chihuahua Lifespan</Link></li>
+          <li><Link href="/guides">View all 10 guides &raquo;</Link></li>
+        </ul>
       </div>
     </aside>
   );

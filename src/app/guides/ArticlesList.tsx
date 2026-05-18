@@ -101,7 +101,7 @@ const ArticlesList = () => {
             </div>
             <div style={{ flex: 1, minWidth: 0 }}>
               <h3 style={{ fontSize: '16px', margin: '0 0 6px 0' }}>
-                <Link href={`/articles/${article.slug}`}>{article.title}</Link>
+                <Link href={`/guides/${article.slug}`}>{article.title}</Link>
               </h3>
               <p style={{ fontSize: '13px', color: '#555', marginBottom: '6px' }}>
                 {article.description}
