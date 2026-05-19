@@ -47,9 +47,9 @@ export default function Guides() {
             <h3>Guide Categories</h3>
             <ul>
               <li><Link href="/guides">Breed Lifespans (50 guides)</Link></li>
-              <li><Link href="/guides">Dog Health Tips (coming soon)</Link></li>
-              <li><Link href="/guides">Puppy Care (coming soon)</Link></li>
-              <li><Link href="/guides">Senior Dog Care (coming soon)</Link></li>
+              <li><Link href="/dog-health-tips">Dog Health Tips (3 guides)</Link></li>
+              <li><Link href="/puppy-care">Puppy Care (3 guides)</Link></li>
+              <li><Link href="/senior-dog-care">Senior Dog Care (3 guides)</Link></li>
             </ul>
           </div>
 
