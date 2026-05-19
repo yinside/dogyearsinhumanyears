@@ -3,8 +3,8 @@ import type { Metadata } from 'next';
 import ArticlesList from './ArticlesList';
 
 export const metadata: Metadata = {
-  title: 'Dog Breed Lifespan Guides | Dog Age Calculator',
-  description: 'Browse our collection of 10 in-depth dog breed lifespan guides. Learn about Labrador Retriever, German Shepherd, Golden Retriever, French Bulldog, Beagle, Chihuahua, Poodle, Yorkie, Boxer, and Great Dane lifespans.',
+  title: 'Dog Breed Lifespan Guides (50 Breeds) | Dog Age Calculator',
+  description: 'Browse our collection of 50 in-depth dog breed lifespan guides. Learn about Labrador, German Shepherd, Golden Retriever, French Bulldog, Beagle, Chihuahua, Poodle, Yorkie, Boxer, Great Dane, Shih Tzu, Dachshund, Rottweiler, Husky, Corgi, Doberman, Aussie, Cavalier, Boston Terrier, Maltese, Mini Schnauzer, Sheltie, Bernese, Border Collie, Bichon, Cocker Spaniel, Bulldog, Pug, Pomeranian, Havanese, Weimaraner, Newfoundland, Basset Hound, Saint Bernard, Ridgeback, Westie, Scottish Terrier, Akita, Cane Corso, Papillon, Shar-Pei, Chow Chow, Malamute, Irish Setter, Staffie, Whippet, Samoyed, Malinois, Shiba Inu, and Lhasa Apso lifespans.',
   keywords: 'dog breed lifespan, how long do dogs live, breed life expectancy, dog health guides, breed lifespan guide',
 };
 
@@ -46,7 +46,7 @@ export default function Guides() {
           <div className="widget">
             <h3>Guide Categories</h3>
             <ul>
-              <li><Link href="/guides">Breed Lifespans (10 guides)</Link></li>
+              <li><Link href="/guides">Breed Lifespans (50 guides)</Link></li>
               <li><Link href="/guides">Dog Health Tips (coming soon)</Link></li>
               <li><Link href="/guides">Puppy Care (coming soon)</Link></li>
               <li><Link href="/guides">Senior Dog Care (coming soon)</Link></li>

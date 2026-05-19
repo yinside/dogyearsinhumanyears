@@ -84,6 +84,22 @@ export default async function BreedArticle({ params }: { params: Promise<{ slug:
                 <span style={{ marginLeft: '10px' }}>Updated: January 15, 2026</span>
               </div>
 
+              {article.imageUrl && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={article.imageUrl}
+                  alt={article.breedName}
+                  style={{
+                    width: '100%',
+                    maxWidth: '400px',
+                    height: 'auto',
+                    border: '1px solid #ccc',
+                    marginBottom: '15px',
+                    display: 'block',
+                  }}
+                />
+              )}
+
               <div style={{
                 background: '#f7f7f7',
                 border: '1px solid #ccc',
