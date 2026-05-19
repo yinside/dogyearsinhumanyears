@@ -235,23 +235,6 @@ export default async function BreedArticle({ params }: { params: Promise<{ slug:
             </div>
 
             <div className="widget">
-              <h3>Related Searches</h3>
-              <ul>
-                {article.relatedSearches.map((search, i) => (
-                  <li key={i}>
-                    <a
-                      href={`https://www.google.com/search?q=${encodeURIComponent(search)}`}
-                      target="_blank"
-                      rel="noopener"
-                    >
-                      {search}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="widget">
               <h3>More Breed Articles</h3>
               <ul>
                 {getAllBreedSlugs()

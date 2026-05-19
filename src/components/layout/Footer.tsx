@@ -16,7 +16,10 @@ const Footer = () => {
             <Link href="/#calculator">Calculator</Link> |
             <Link href="/#age-chart">Age Chart</Link> |
             <Link href="/#faq">FAQ</Link> |
-            <Link href="/guides">Guides</Link> |
+            <Link href="/guides">Breed Guides</Link> |
+            <Link href="/dog-health-tips">Health Tips</Link> |
+            <Link href="/puppy-care">Puppy Care</Link> |
+            <Link href="/senior-dog-care">Senior Care</Link> |
             <Link href="/about">About Us</Link> |
             <Link href="/contact">Contact</Link> |
             <Link href="/privacy">Privacy Policy</Link> |

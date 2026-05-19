@@ -126,6 +126,15 @@ const SidebarWidgets = () => {
           <li><Link href="/guides">View all 50 guides &raquo;</Link></li>
         </ul>
       </div>
+
+      <div className="widget">
+        <h3>More Dog Resources</h3>
+        <ul>
+          <li><Link href="/dog-health-tips">Dog Health Tips (3 guides)</Link></li>
+          <li><Link href="/puppy-care">Puppy Care Guides (3 guides)</Link></li>
+          <li><Link href="/senior-dog-care">Senior Dog Care (3 guides)</Link></li>
+        </ul>
+      </div>
     </aside>
   );
 };
