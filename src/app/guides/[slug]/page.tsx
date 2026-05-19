@@ -262,7 +262,7 @@ export default async function BreedArticle({ params }: { params: Promise<{ slug:
                       </li>
                     );
                   })}
-                <li><Link href="/guides">View all 10 guides &raquo;</Link></li>
+                <li><Link href="/guides">View all 50 guides &raquo;</Link></li>
               </ul>
             </div>
 
