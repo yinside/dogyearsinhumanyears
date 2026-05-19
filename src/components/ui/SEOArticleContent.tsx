@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 const SEOArticleContent = () => {
   return (
     <section id="article" className="section-box">
@@ -343,11 +345,11 @@ const SEOArticleContent = () => {
         <div className="related-links">
           <strong>See Also:</strong>
           <br />
-          <a href="/guides">50 Dog Breed Lifespan Guides</a> |
-          <a href="/guides/labrador-retriever-lifespan">Labrador Retriever Lifespan Guide</a> |
-          <a href="/guides/chihuahua-lifespan">Chihuahua Lifespan Guide</a> |
-          <a href="/about">About Dog Years Calculator</a> |
-          <a href="/contact">Contact Us</a>
+          <Link href="/guides">50 Dog Breed Lifespan Guides</Link> |
+          <Link href="/guides/labrador-retriever-lifespan">Labrador Retriever Lifespan Guide</Link> |
+          <Link href="/guides/chihuahua-lifespan">Chihuahua Lifespan Guide</Link> |
+          <Link href="/about">About Dog Years Calculator</Link> |
+          <Link href="/contact">Contact Us</Link>
         </div>
 
       </div>
