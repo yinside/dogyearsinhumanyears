@@ -33,16 +33,16 @@ const SidebarWidgets = () => {
     { breed: 'Poodle (Toy)', lifespan: '14-16 years', slug: 'poodle-lifespan' },
     { breed: 'Yorkshire Terrier', lifespan: '13-15 years', slug: 'yorkshire-terrier-lifespan' },
     { breed: 'Boxer', lifespan: '9-12 years', slug: 'boxer-lifespan' },
-    { breed: 'Dachshund', lifespan: '12-15 years', slug: '' },
+    { breed: 'Dachshund', lifespan: '12-15 years', slug: 'dachshund-lifespan' },
     { breed: 'Great Dane', lifespan: '8-10 years', slug: 'great-dane-lifespan' },
   ];
 
   const relatedTools = [
-    { name: 'Cat Years Calculator', href: '/cat-years-calculator' },
-    { name: 'Puppy Growth Calculator', href: '/puppy-growth-calculator' },
-    { name: 'Dog Weight Calculator', href: '/dog-weight-calculator' },
-    { name: 'Pet Calorie Calculator', href: '/pet-calorie-calculator' },
-    { name: 'Dog Breed Selector', href: '/dog-breed-selector' },
+    { name: 'All Dog Breed Lifespan Guides', href: '/guides' },
+    { name: 'Labrador Retriever Lifespan', href: '/guides/labrador-retriever-lifespan' },
+    { name: 'Golden Retriever Lifespan', href: '/guides/golden-retriever-lifespan' },
+    { name: 'German Shepherd Lifespan', href: '/guides/german-shepherd-lifespan' },
+    { name: 'Chihuahua Lifespan', href: '/guides/chihuahua-lifespan' },
   ];
 
   return (
@@ -123,7 +123,7 @@ const SidebarWidgets = () => {
           <li><Link href="/guides/golden-retriever-lifespan">Golden Retriever Lifespan</Link></li>
           <li><Link href="/guides/french-bulldog-lifespan">French Bulldog Lifespan</Link></li>
           <li><Link href="/guides/chihuahua-lifespan">Chihuahua Lifespan</Link></li>
-          <li><Link href="/guides">View all 10 guides &raquo;</Link></li>
+          <li><Link href="/guides">View all 50 guides &raquo;</Link></li>
         </ul>
       </div>
     </aside>

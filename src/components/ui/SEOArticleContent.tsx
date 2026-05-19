@@ -343,11 +343,11 @@ const SEOArticleContent = () => {
         <div className="related-links">
           <strong>See Also:</strong>
           <br />
-          <a href="/dog-age-chart">Printable Dog Age Chart (PDF)</a> |
-          <a href="/cat-years-calculator">Cat Years to Human Years Calculator</a> |
-          <a href="/puppy-growth-calculator">Puppy Growth &amp; Development Calculator</a> |
-          <a href="/senior-dog-care-guide">Senior Dog Care Guide</a> |
-          <a href="/dog-health-tips">Top 20 Dog Health Tips from Veterinarians</a>
+          <a href="/guides">50 Dog Breed Lifespan Guides</a> |
+          <a href="/guides/labrador-retriever-lifespan">Labrador Retriever Lifespan Guide</a> |
+          <a href="/guides/chihuahua-lifespan">Chihuahua Lifespan Guide</a> |
+          <a href="/about">About Dog Years Calculator</a> |
+          <a href="/contact">Contact Us</a>
         </div>
 
       </div>
