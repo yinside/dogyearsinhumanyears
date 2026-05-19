@@ -239,9 +239,13 @@ export default async function BreedArticle({ params }: { params: Promise<{ slug:
               <ul>
                 {article.relatedSearches.map((search, i) => (
                   <li key={i}>
-                    <span style={{ color: '#551A8B', cursor: 'pointer', textDecoration: 'underline' }}>
+                    <a
+                      href={`https://www.google.com/search?q=${encodeURIComponent(search)}`}
+                      target="_blank"
+                      rel="noopener"
+                    >
                       {search}
-                    </span>
+                    </a>
                   </li>
                 ))}
               </ul>
