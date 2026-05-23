@@ -23,7 +23,8 @@ const Footer = () => {
             <Link href="/about">About Us</Link> |
             <Link href="/contact">Contact</Link> |
             <Link href="/privacy">Privacy Policy</Link> |
-            <Link href="/terms">Terms of Service</Link>
+            <Link href="/terms">Terms of Service</Link> |
+            <Link href="/sitemap.xml">Sitemap</Link>
           </div>
 
           <p>
